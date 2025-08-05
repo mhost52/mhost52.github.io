@@ -233,17 +233,17 @@
 			}
 			
 			/* State sebelum terlihat */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease-out;
-}
+			.animate-on-scroll {
+			  opacity: 0;
+			  transform: translateY(40px);
+			  transition: all 0.6s ease-out;
+			}
 
-/* State setelah terlihat */
-.animate-on-scroll.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
+			/* State setelah terlihat */
+			.animate-on-scroll.animate {
+			  opacity: 1;
+			  transform: translateY(0);
+			}
 
 
                   .section-title {
@@ -623,45 +623,45 @@
 			}
 			
 			#lokasi {
-  background: linear-gradient(135deg, #dfe9f3, #bcd4e6); /* Biru langit lembut */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 3rem 2rem;
-  transition: background 0.3s ease;
-}
+			  background: linear-gradient(135deg, #dfe9f3, #bcd4e6); /* Biru langit lembut */
+			  border-radius: 12px;
+			  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			  padding: 3rem 2rem;
+			  transition: background 0.3s ease;
+			}
 
-#lokasi:hover {
-  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
-}
+			#lokasi:hover {
+			  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
+			}
 
-.translate-wrapper {
-  text-align: right;
-  margin-top: 20px;
-  font-family: 'Segoe UI', sans-serif;
-}
+			.translate-wrapper {
+			  text-align: right;
+			  margin-top: 20px;
+			  font-family: 'Segoe UI', sans-serif;
+			}
 
-.goog-te-combo {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  font-size: 1rem;
-  color: #333;
-  transition: all 0.3s ease;
-}
+			.goog-te-combo {
+			  padding: 8px 12px;
+			  border-radius: 6px;
+			  border: 1px solid #ccc;
+			  background-color: #f9f9f9;
+			  font-size: 1rem;
+			  color: #333;
+			  transition: all 0.3s ease;
+			}
 
-.goog-te-combo:hover {
-  background-color: #e0e0e0;
-  cursor: pointer;
-}
+			.goog-te-combo:hover {
+			  background-color: #e0e0e0;
+			  cursor: pointer;
+			}
 
-.translate-wrapper {
-  position: relative;
-  z-index: 999;
-  padding: 10px;
-  text-align: right;
-  background-color: transparent;
-}
+			.translate-wrapper {
+			  position: relative;
+			  z-index: 999;
+			  padding: 10px;
+			  text-align: right;
+			  background-color: transparent;
+			}
     </style>
     </head>
     <body>
@@ -975,16 +975,25 @@
     const map = L.map('map').setView([-6.91147, 107.5612], 16); // Koordinat PT Leuwijaya Utama Textile
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: '� OpenStreetMap contributors'
     }).addTo(map);
 
-    L.marker([-6.91147, 107.5612])
+    const destinationLat = -6.91147;
+    const destinationLng = 107.5612;
+
+    const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
+
+    L.marker([destinationLat, destinationLng])
         .addTo(map)
-        .bindPopup("<b>PT Leuwijaya Utama Textile</b><br>Jl. Cibaligo KM 1.75, Cimahi")
+        .bindPopup(`
+            <b>PT Leuwijaya Utama Textile</b><br>
+            Jl. Cibaligo KM 1.75, Cimahi<br>
+            <a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
+                 Get Directions
+            </a>
+        `)
         .openPopup();
 </script>
-
-
 
         <!-- Footer -->
         <footer>&copy; 2025 PT Leuwijaya. All rights reserved.</footer>
@@ -1270,4 +1279,3 @@ $("#nextBtn").on("click", function () {
         <button id="backToTop">↑ Back to Top</button>
     </body>
 </html>
-
