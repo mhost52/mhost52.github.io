@@ -937,7 +937,8 @@
 					üìç Chat Us via WhatsApp
 				</a>
 			</div>
-        </section>
+        </section>		
+		
 		<!-- Career -->
 		
 		<!-- <section id="career" class="container py-5 animate-on-scroll"> -->
@@ -970,45 +971,45 @@
 		<section id="lokasi" class="container py-5 animate-on-scroll">
 			<h2 class="section-title">Our Location</h2>
 			<div id="map" style="height: 450px; border-radius: 8px;"></div>
-		
 
-<div class="text-center mt-4">
-    <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik."
-       target="_blank"
-       class="btn btn-success"
-       style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;">
-        üìç Chat via WhatsApp for Directions
-    </a>
-</div>
-</section>
+			<div class="text-center mt-4">
+				<a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik."
+				   target="_blank"
+				   class="btn btn-success"
+				   style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;">
+					üìç Chat via WhatsApp for Directions
+				</a>
+			</div>
+		</section>
 
-<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<!-- Leaflet CSS & JS -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<script>
-    const map = L.map('map').setView([-6.91147, 107.5612], 16); // Koordinat PT Leuwijaya Utama Textile
+		<script>
+			const map = L.map('map').setView([-6.91147, 107.5612], 16); // Koordinat PT Leuwijaya Utama Textile
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '© OpenStreetMap contributors'
+			}).addTo(map);
 
-    const destinationLat = -6.91147;
-    const destinationLng = 107.5612;
+			const destinationLat = -6.910939527850809;
+			const destinationLng = 107.55055595048624;
 
-    const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
 
-    L.marker([destinationLat, destinationLng])
-        .addTo(map)
-        .bindPopup(`
-            <b>PT Leuwijaya Utama Textile</b><br>
-            Jl. Cibaligo KM 1.75, Cimahi<br>
-            <a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
-                 Get Directions
-            </a>
-        `)
-        .openPopup();
-</script>
+			const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
+
+			L.marker([destinationLat, destinationLng])
+				.addTo(map)
+				.bindPopup(`
+					<b>PT Leuwijaya Utama Textile</b><br>
+					Jl. Cibaligo KM 1.75, Cimahi<br>
+					<a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
+						 Get Directions
+					</a>
+				`)
+				.openPopup();
+		</script>
 
         <!-- Footer -->
         <footer>&copy; 2025 PT Leuwijaya. All rights reserved.</footer>
