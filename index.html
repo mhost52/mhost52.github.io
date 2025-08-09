@@ -870,6 +870,7 @@
   </div>
 </section>
         <!-- Certificate -->
+		<div id="sectionToPrint">
         <section id="certificate" class="container py-5 animate-on-scroll" style="background: linear-gradient(to right, #f8f9fc, #e3e6ea, #d1d9e6); border-radius: 16px;">
             <div class="container">
                 <h2 class="section-title">Certificate</h2>
@@ -885,8 +886,10 @@
                         <img src="Halal.png" alt="Certificate 2" class="img-fluid rounded shadow img-hover-zoom w-75 mx-auto d-block" />
                     </div>
                 </div>
-            </div>
+            </div>			
         </section>
+		<button onclick="printSection()">Print Section</button>
+		</div>
         <!-- Our Value -->
         <section id="value" class="container py-5 animate-on-scroll">
             <h2 class="section-title">Our Value</h2>
@@ -930,12 +933,12 @@
                 <li><strong>Address:</strong> Jl. Cibaligo KM 1.75 Leuwigajah, Cimahi, Jawa Barat 40533 - Indonesia</li>
             </ul>
 			<div class="text-center mt-4">
-				<a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik."
-				   target="_blank"
-				   class="btn btn-success"
-				   style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;">
-					📍 Chat Us via WhatsApp
-				</a>
+				<!-- <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik." -->
+				   <!-- target="_blank" -->
+				   <!-- class="btn btn-success" -->
+				   <!-- style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;"> -->
+					<!-- 📍 Chat Us via WhatsApp -->
+				<!-- </a> -->
 			</div>
         </section>		
 		
@@ -967,24 +970,62 @@
 		<!-- </section> -->
 				
 		<!-- Map Section -->
-<!-- Leaflet Map Section -->
+		<!-- Leaflet Map Section -->
 		<section id="lokasi" class="container py-5 animate-on-scroll">
 			<h2 class="section-title">Our Location</h2>
 			<div id="map" style="height: 450px; border-radius: 8px;"></div>
 
-			<div class="text-center mt-4">
-				<a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik."
-				   target="_blank"
-				   class="btn btn-success"
-				   style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;">
-					📍 Chat via WhatsApp for Directions
-				</a>
-			</div>
+			<!-- <div class="text-center mt-4"> -->
+				<!-- <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik." -->
+				   <!-- target="_blank" -->
+				   <!-- class="btn btn-success" -->
+				   <!-- style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;"> -->
+					<!-- 📍 Chat via WhatsApp for Directions -->
+				<!-- </a> -->
+			<!-- </div> -->
 		</section>
 
 		<!-- Leaflet CSS & JS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		
+		<script>
+		function printSection() {
+  var content = document.getElementById("sectionToPrint").innerHTML;
+  var printWindow = window.open('', '', 'height=600,width=800');
+  printWindow.document.write('<html><head><title>Print</title>');
+  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(content);
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+
+  // Tunggu sampai semua gambar selesai dimuat
+  printWindow.onload = function () {
+    const images = printWindow.document.images;
+    let loaded = 0;
+    const total = images.length;
+
+    if (total === 0) {
+      printWindow.focus();
+      printWindow.print();
+      printWindow.close();
+    } else {
+      for (let i = 0; i < total; i++) {
+        images[i].onload = images[i].onerror = function () {
+          loaded++;
+          if (loaded === total) {
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+          }
+        };
+      }
+    }
+  };
+}
+
+		</script>
 
 		<script>
 			const map = L.map('map').setView([-6.91147, 107.5612], 16); // Koordinat PT Leuwijaya Utama Textile
