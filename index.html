@@ -841,38 +841,40 @@
 		<!-- </section> -->
         <!-- Produk -->
        <section id="produk" class="container py-5">
-  <div class="container">
-    
-	<h2 class="section-title">Our Products</h2>
+		  <div class="container">
+			<div id="sectionToPrintProduct">
+			<h2 class="section-title">Our Products</h2>
 
-    <!-- Tabs Kategori -->
-    <div class="text-center mb-4">
-      <div id="kategori-tabs" class="btn-group" role="group">
-        <button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
-        <button class="btn btn-outline-primary kategori-tab" data-kategori="FORMAL BLACK">Formal Black</button>
-        <button class="btn btn-outline-primary kategori-tab" data-kategori="SUITING">Suiting</button>
-        <button class="btn btn-outline-primary kategori-tab" data-kategori="WOVEN">Woven</button>
-        <button class="btn btn-outline-primary kategori-tab" data-kategori="KNITTING">Knitting</button>
-      </div>
-    </div>
+			<!-- Tabs Kategori -->
+			<div class="text-center mb-4">
+			  <div id="kategori-tabs" class="btn-group" role="group">
+				<button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="FORMAL BLACK">Formal Black</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="SUITING">Suiting</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="WOVEN">Woven</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="KNITTING">Knitting</button>
+			  </div>
+			</div>
 
-    <!-- Wrapper Produk -->
-    <div class="produk-wrapper position-relative d-flex justify-content-center align-items-center">
-      <!-- Tombol kiri -->
-      <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button>
+			<!-- Wrapper Produk -->
+			<div class="produk-wrapper position-relative d-flex justify-content-center align-items-center">
+			  <!-- Tombol kiri -->
+			  <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button>
 
-      <!-- Galeri Produk -->
-      <div id="produk-list" class="row justify-content-center w-100"></div>
+			  <!-- Galeri Produk -->
+			  <div id="produk-list" class="row justify-content-center w-100"></div>
 
-      <!-- Tombol kanan -->
-      <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button>
-    </div>
-  </div>
-</section>
+			  <!-- Tombol kanan -->
+			  <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button>
+			</div>
+			</div>
+		  </div>
+		  <button onclick="printSection2()">Print Products</button>
+		</section>
         <!-- Certificate -->
-		<div id="sectionToPrint">
         <section id="certificate" class="container py-5 animate-on-scroll" style="background: linear-gradient(to right, #f8f9fc, #e3e6ea, #d1d9e6); border-radius: 16px;">
-            <div class="container">
+			<div id="sectionToPrint">
+			<div class="container">
                 <h2 class="section-title">Certificate</h2>
                 <div class="row justify-content-center">
                     <!-- ISO Certificate -->
@@ -886,10 +888,12 @@
                         <img src="Halal.png" alt="Certificate 2" class="img-fluid rounded shadow img-hover-zoom w-75 mx-auto d-block" />
                     </div>
                 </div>
-            </div>			
+            </div>
+			</div>			
+			<button onclick="printSection()">Print Certificates</button>
         </section>
-		<button onclick="printSection()">Print Section</button>
-		</div>
+		
+		
         <!-- Our Value -->
         <section id="value" class="container py-5 animate-on-scroll">
             <h2 class="section-title">Our Value</h2>
@@ -991,40 +995,76 @@
 		
 		<script>
 		function printSection() {
-  var content = document.getElementById("sectionToPrint").innerHTML;
-  var printWindow = window.open('', '', 'height=600,width=800');
-  printWindow.document.write('<html><head><title>Print</title>');
-  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
-  printWindow.document.write('</head><body>');
-  printWindow.document.write(content);
-  printWindow.document.write('</body></html>');
-  printWindow.document.close();
+		  var content = document.getElementById("sectionToPrint").innerHTML;
+		  var printWindow = window.open('', '', 'height=600,width=800');
+		  printWindow.document.write('<html><head><title>Print</title>');
+		  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
+		  printWindow.document.write('</head><body>');
+		  printWindow.document.write(content);
+		  printWindow.document.write('</body></html>');
+		  printWindow.document.close();
 
-  // Tunggu sampai semua gambar selesai dimuat
-  printWindow.onload = function () {
-    const images = printWindow.document.images;
-    let loaded = 0;
-    const total = images.length;
+		  // Tunggu sampai semua gambar selesai dimuat
+		  printWindow.onload = function () {
+			const images = printWindow.document.images;
+			let loaded = 0;
+			const total = images.length;
 
-    if (total === 0) {
-      printWindow.focus();
-      printWindow.print();
-      printWindow.close();
-    } else {
-      for (let i = 0; i < total; i++) {
-        images[i].onload = images[i].onerror = function () {
-          loaded++;
-          if (loaded === total) {
-            printWindow.focus();
-            printWindow.print();
-            printWindow.close();
-          }
-        };
-      }
-    }
-  };
-}
+			if (total === 0) {
+			  printWindow.focus();
+			  printWindow.print();
+			  printWindow.close();
+			} else {
+			  for (let i = 0; i < total; i++) {
+				images[i].onload = images[i].onerror = function () {
+				  loaded++;
+				  if (loaded === total) {
+					printWindow.focus();
+					printWindow.print();
+					printWindow.close();
+				  }
+				};
+			  }
+			}
+		  };
+		}
+		</script>
+		
+		<script>
+		function printSection2() {
+		  var content = document.getElementById("sectionToPrintProduct").innerHTML;
+		  var printWindow = window.open('', '', 'height=600,width=800');
+		  printWindow.document.write('<html><head><title>Print</title>');
+		  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
+		  printWindow.document.write('</head><body>');
+		  printWindow.document.write(content);
+		  printWindow.document.write('</body></html>');
+		  printWindow.document.close();
 
+		  // Tunggu sampai semua gambar selesai dimuat
+		  printWindow.onload = function () {
+			const images = printWindow.document.images;
+			let loaded = 0;
+			const total = images.length;
+
+			if (total === 0) {
+			  printWindow.focus();
+			  printWindow.print();
+			  printWindow.close();
+			} else {
+			  for (let i = 0; i < total; i++) {
+				images[i].onload = images[i].onerror = function () {
+				  loaded++;
+				  if (loaded === total) {
+					printWindow.focus();
+					printWindow.print();
+					printWindow.close();
+				  }
+				};
+			  }
+			}
+		  };
+		}
 		</script>
 
 		<script>
