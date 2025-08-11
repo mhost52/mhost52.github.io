@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sinkronisasi LinkedIn</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .btn-linkedin {
+      background-color: #0077b5;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-linkedin:hover {
+      background-color: #005983;
+    }
+
+    .checkbox-group {
+      margin-bottom: 20px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Sinkronisasi LinkedIn</h2>
+    <p>Hubungkan akun LinkedIn Anda untuk mempercepat pengisian profil profesional dan lamaran kerja.</p>
+
+    <button class="btn-linkedin">Login via LinkedIn</button>
+
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" name="izin_profil" checked>
+        Izinkan pengambilan data profil LinkedIn saya
+      </label>
+      <label>
+        <input type="checkbox" name="sinkronisasi_pengalaman" checked>
+        Sinkronisasi pengalaman kerja & keterampilan secara otomatis
+      </label>
+    </div>
+
+    <button type="submit">Lanjutkan Sinkronisasi</button>
+
+    <div class="footer">
+      © 2025 Portal Karier Indonesia
+    </div>
+  </div>
+</body>
+</html>

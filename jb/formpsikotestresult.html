@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akses Perekrut ke Hasil Tes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 30px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #edf2f4;
+      color: #2b2d42;
+    }
+
+    .invite-btn {
+      background-color: #0077b6;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .invite-btn:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📂 Akses Perekrut ke Hasil Tes Psikotes</h2>
+
+    <div class="filters">
+      <select id="filter-tipe">
+        <option value="">Filter Tipe Kepribadian</option>
+        <option value="INFP">INFP</option>
+        <option value="ESTJ">ESTJ</option>
+        <option value="DISC-D">DISC - Dominance</option>
+        <option value="DISC-S">DISC - Steadiness</option>
+      </select>
+
+      <select id="filter-skor">
+        <option value="">Filter Skor Logika Numerik</option>
+        <option value="80+">80 ke atas</option>
+        <option value="60-79">60–79</option>
+        <option value="di bawah 60">Di bawah 60</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nama Kandidat</th>
+          <th>Tipe Kepribadian</th>
+          <th>Skor Logika</th>
+          <th>Rekomendasi Karier</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rina A.</td>
+          <td>INFP</td>
+          <td>85</td>
+          <td>Desainer, Konselor</td>
+          <td><button class="invite-btn" onclick="invite('Rina A.')">Undang Tes Tambahan</button></td>
+        </tr>
+        <tr>
+          <td>Fajar B.</td>
+          <td>DISC - D</td>
+          <td>78</td>
+          <td>Manajer Proyek, Sales Lead</td>
+          <td><button class="invite-btn" onclick="invite('Fajar B.')">Undang Tes Tambahan</button></td>
+        </tr>
+        <tr>
+          <td>Siti C.</td>
+          <td>ESTJ</td>
+          <td>92</td>
+          <td>Supervisor, HR Specialist</td>
+          <td><button class="invite-btn" onclick="invite('Siti C.')">Undang Tes Tambahan</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Hasil tes ditampilkan atas izin kandidat. Perekrut dapat mengundang tes tambahan untuk validasi lebih lanjut.
+    </div>
+  </div>
+
+  <script>
+    function invite(name) {
+      alert("Undangan tes tambahan telah dikirim ke " + name + ".");
+    }
+  </script>
+</body>
+</html>

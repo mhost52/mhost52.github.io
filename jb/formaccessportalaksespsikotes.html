@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Tes Psikotes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #edf2f4;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Portal Tes Psikotes</h1>
+
+    <div class="grid">
+      <div class="card" onclick="navigate('pendaftaran')">
+        <h3>📋 Formulir Pendaftaran Tes</h3>
+        <p>Mulai tes psikotes seperti MBTI, DISC, logika numerik, dan lainnya dengan persetujuan privasi.</p>
+      </div>
+
+      <div class="card" onclick="navigate('modul')">
+        <h3>🧩 Modul Tes Interaktif</h3>
+        <p>Jawab pertanyaan pilihan ganda atau skenario dengan navigasi soal dan timer opsional.</p>
+      </div>
+
+      <div class="card" onclick="navigate('hasil')">
+        <h3>📊 Hasil & Interpretasi</h3>
+        <p>Lihat grafik hasil, tipe kepribadian, skor tes, dan rekomendasi karier berdasarkan jawaban Anda.</p>
+      </div>
+
+      <div class="card" onclick="navigate('profil')">
+        <h3>👤 Integrasi ke Profil Pengguna</h3>
+        <p>Tampilkan hasil psikotes di profil Anda, lengkap dengan kontrol visibilitas publik.</p>
+      </div>
+
+      <div class="card" onclick="navigate('perekrut')">
+        <h3>🧑‍💼 Akses Perekrut</h3>
+        <p>Perekrut dapat melihat hasil tes kandidat, memfilter berdasarkan tipe atau skor, dan mengundang tes tambahan.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      Semua data tes disimpan dengan aman dan hanya dibagikan atas izin pengguna.
+    </div>
+  </div>
+
+  <script>
+    function navigate(section) {
+      alert("Navigasi ke halaman: " + section);
+      // Di versi produksi, arahkan ke URL atau halaman terkait
+    }
+  </script>
+</body>
+</html>

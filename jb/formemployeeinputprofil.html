@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Profesional</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #0077b6;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Profil Profesional</h2>
+    <form>
+      <label for="foto">Foto Profil</label>
+      <input type="file" id="foto" name="foto" accept="image/*">
+
+      <label for="bio">Ringkasan Profesional</label>
+      <textarea id="bio" name="bio" rows="4" placeholder="Ceritakan tentang latar belakang dan keahlian Anda" required></textarea>
+
+      <div class="section-title">Pengalaman Kerja</div>
+      <label for="posisi">Posisi</label>
+      <input type="text" id="posisi" name="posisi">
+
+      <label for="perusahaan">Perusahaan</label>
+      <input type="text" id="perusahaan" name="perusahaan">
+
+      <label for="durasi">Durasi</label>
+      <input type="text" id="durasi" name="durasi" placeholder="Contoh: Jan 2020 - Des 2022">
+
+      <label for="deskripsi_pekerjaan">Deskripsi Pekerjaan</label>
+      <textarea id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" rows="3"></textarea>
+
+      <div class="section-title">Pendidikan</div>
+      <label for="institusi">Institusi</label>
+      <input type="text" id="institusi" name="institusi">
+
+      <label for="jurusan">Jurusan</label>
+      <input type="text" id="jurusan" name="jurusan">
+
+      <label for="tahun">Tahun</label>
+      <input type="text" id="tahun" name="tahun" placeholder="Contoh: 2018 - 2022">
+
+      <div class="section-title">Keterampilan</div>
+      <label for="skill">Skill Tags</label>
+      <input type="text" id="skill" name="skill" placeholder="Contoh: Python, Leadership, Adobe XD">
+
+      <div class="section-title">Sertifikasi & Penghargaan</div>
+      <textarea id="sertifikasi" name="sertifikasi" rows="3" placeholder="Contoh: Google UX Certificate, Juara Hackathon 2023"></textarea>
+
+      <div class="section-title">Portofolio</div>
+      <label for="link_portofolio">Tautan Portofolio</label>
+      <input type="url" id="link_portofolio" name="link_portofolio" placeholder="Contoh: https://dribbble.com/nama">
+
+      <label for="upload_portofolio">Upload File Portofolio</label>
+      <input type="file" id="upload_portofolio" name="upload_portofolio" accept=".pdf,.doc,.ppt,.zip">
+
+      <div class="section-title">Preferensi Pekerjaan</div>
+      <label for="lokasi_preferensi">Lokasi</label>
+      <input type="text" id="lokasi_preferensi" name="lokasi_preferensi">
+
+      <label for="gaji_preferensi">Gaji yang Diharapkan</label>
+      <input type="number" id="gaji_preferensi" name="gaji_preferensi" placeholder="Contoh: 7000000">
+
+      <label for="jenis_pekerjaan">Jenis Pekerjaan</label>
+      <select id="jenis_pekerjaan" name="jenis_pekerjaan">
+        <option value="">-- Pilih Jenis --</option>
+        <option value="full-time">Full-time</option>
+        <option value="freelance">Freelance</option>
+        <option value="remote">Remote</option>
+        <option value="internship">Magang</option>
+      </select>
+
+      <button type="submit">Simpan Profil</button>
+    </form>
+    <div class="footer">
+      © 2025 Portal Karier Indonesia
+    </div>
+  </div>
+</body>
+</html>

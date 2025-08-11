@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulir Feedback / Review</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    textarea,
+    select,
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #0077b6;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Feedback / Review</h2>
+    <form>
+      <div class="section-title">Review Perusahaan oleh Kandidat</div>
+      <label for="nama_perusahaan">Nama Perusahaan</label>
+      <input type="text" id="nama_perusahaan" name="nama_perusahaan" required>
+
+      <label for="review_perusahaan">Ulasan Anda</label>
+      <textarea id="review_perusahaan" name="review_perusahaan" rows="4" placeholder="Bagikan pengalaman Anda selama proses rekrutmen..." required></textarea>
+
+      <label for="rating_perusahaan">Rating</label>
+      <select id="rating_perusahaan" name="rating_perusahaan" required>
+        <option value="">-- Pilih Rating --</option>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★</option>
+        <option value="3">★★★</option>
+        <option value="2">★★</option>
+        <option value="1">★</option>
+      </select>
+
+      <div class="section-title">Review Kandidat oleh Perekrut (Opsional)</div>
+      <label for="nama_kandidat">Nama Kandidat</label>
+      <input type="text" id="nama_kandidat" name="nama_kandidat">
+
+      <label for="review_kandidat">Ulasan Perekrut</label>
+      <textarea id="review_kandidat" name="review_kandidat" rows="4" placeholder="Berikan masukan atau penilaian terhadap kandidat (jika diperlukan)"></textarea>
+
+      <label for="rating_kandidat">Rating Kandidat</label>
+      <select id="rating_kandidat" name="rating_kandidat">
+        <option value="">-- Pilih Rating --</option>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★</option>
+        <option value="3">★★★</option>
+        <option value="2">★★</option>
+        <option value="1">★</option>
+      </select>
+
+      <button type="submit">Kirim Review</button>
+    </form>
+    <div class="footer">
+      © 2025 Portal Karier Indonesia
+    </div>
+  </div>
+</body>
+</html>

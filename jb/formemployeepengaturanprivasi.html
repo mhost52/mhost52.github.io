@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengaturan Privasi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .toggle-group {
+      margin-bottom: 20px;
+    }
+
+    .toggle-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .toggle-group input {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Pengaturan Privasi</h2>
+    <form>
+      <label for="akses_profil">Siapa yang Bisa Melihat Profil Anda</label>
+      <select id="akses_profil" name="akses_profil" required>
+        <option value="">-- Pilih Opsi --</option>
+        <option value="semua">Semua pengguna dan perekrut</option>
+        <option value="perekrut">Hanya perekrut terverifikasi</option>
+        <option value="pribadi">Hanya Anda (profil pribadi)</option>
+      </select>
+
+      <div class="toggle-group">
+        <label>
+          <input type="checkbox" id="pencarian" name="pencarian" checked>
+          Izinkan profil saya muncul dalam pencarian oleh perekrut
+        </label>
+      </div>
+
+      <button type="submit">Simpan Pengaturan</button>
+    </form>
+    <div class="footer">
+      © 2025 Portal Karier Indonesia
+    </div>
+  </div>
+</body>
+</html>

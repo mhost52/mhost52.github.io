@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Aktivasi Verifikasi Dua Langkah (2FA)</h2>
+  <form>
+    <label for="method">Pilih Metode Verifikasi</label>
+    <select id="method" name="method" required>
+      <option value="">-- Pilih Metode --</option>
+      <option value="sms">Kode SMS</option>
+      <option value="email">Email Verifikasi</option>
+      <option value="authenticator">Aplikasi Authenticator</option>
+    </select>
+
+    <label for="phone">Nomor HP (jika memilih SMS)</label>
+    <input type="tel" id="phone" name="phone" placeholder="+62xxxxxxxxxx">
+
+    <button type="submit">Aktifkan 2FA</button>
+  </form>
+  <div class="footer">Keamanan tambahan untuk melindungi akun Anda dari akses tidak sah.</div>
+</div>

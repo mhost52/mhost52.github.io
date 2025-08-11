@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendaftaran Tes Psikotes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2d42;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .checkbox-group {
+      margin-bottom: 20px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 Pendaftaran Tes Psikotes</h2>
+    <form>
+      <label for="nama">Nama Pengguna</label>
+      <input type="text" id="nama" name="nama" value="(otomatis dari profil)" disabled>
+
+      <label for="jenis-tes">Jenis Tes yang Akan Diambil</label>
+      <select id="jenis-tes" name="jenis-tes" required>
+        <option value="">-- Pilih Jenis Tes --</option>
+        <option value="mbti">MBTI (Kepribadian)</option>
+        <option value="disc">DISC (Gaya Komunikasi)</option>
+        <option value="logika">Logika Numerik</option>
+        <option value="verbal">Verbal Reasoning</option>
+      </select>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="persetujuan" required>
+          Saya menyetujui penggunaan data hasil tes untuk analisis dan pengembangan karier.
+        </label>
+      </div>
+
+      <button type="submit">Mulai Tes</button>
+    </form>
+    <div class="footer">
+      Data hasil tes akan disimpan secara rahasia dan hanya digunakan sesuai kebijakan privasi.
+    </div>
+  </div>
+</body>
+</html>
