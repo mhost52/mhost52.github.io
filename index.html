@@ -13,6 +13,31 @@
 		
         <style>
 		
+					.background-image {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%; /* Menutupi seluruh section */
+						background-image: url('tentangggd.png');
+						background-size: cover;
+						background-position: center;
+						opacity: 0.2; /* Transparansi agar teks tetap terbaca */
+						z-index: 0;
+						pointer-events: none;
+					}
+
+					.background-image::after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.3); /* lapisan gelap */
+					}
+
+		
 					#lokasi {
 						display: flex;
 						flex-direction: column;
@@ -756,19 +781,26 @@
             </div>
         </section>
         <!-- Tentang Kami -->
-        <section id="tentang" class="container py-5 animate-on-scroll" style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
-            <div style="flex: 1;">
-                <h2 class="section-title">ABOUT COMPANY</h2>
-                <p class="text-center">
-                    Leuwijaya Utama Textile was established since 1987 in Cimahi as a downstream manufacturer specializing in high-quality polyester fabric. We are a leading integrated textile company, encompassing the entire spectrum of
-                    textile manufacturing, including weaving, dyeing, and finishing. In alignment with the national emphasis on international trade and globalization, we are proud to be part of the global community and provide an overview
-                    of our company and products.
-                </p>
-            </div>
-            <!-- <div style="flex: 1; text-align: center;"> -->
-                <!-- <img src="about.png" alt="Company Image" style="max-width: 100%; height: auto;" /> -->
-            <!-- </div> -->
-        </section>
+        <section id="tentang" class="container py-5 animate-on-scroll" style="position: relative; overflow: hidden; min-height: 400px; padding-top: 80px; padding-bottom: 80px;">
+			<!-- Background image via CSS -->
+			<div class="background-image"></div>
+			<!-- Konten teks di atas background -->
+			<div style="position: relative; z-index: 1;">				
+				<h2 class="section-title">ABOUT COMPANY</h2>
+				<p class="text-center" style="
+				color: white;				
+				text-shadow: 1px 1px 3px gold, 0 0 5px #ffd700;
+				padding: 20px;
+			">
+				Leuwijaya Utama Textile was established since 1987 in Cimahi as a downstream manufacturer specializing in high-quality polyester fabric. We are a leading integrated textile company, encompassing the entire spectrum of
+				textile manufacturing, including weaving, dyeing, and finishing. In alignment with the national emphasis on international trade and globalization, we are proud to be part of the global community and provide an overview
+				of our company and products.
+			</p>
+
+			</div>
+		</section>
+
+
         <section id="aboutdetail" class="container py-5" style="margin-top: -80px; position: relative; z-index: 2;">
             <div class="fabric-group">
                 <div class="fabric-card animate-left">
