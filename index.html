@@ -6,8 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Bootstrap & jQuery CDN -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+		
         <style>
-
+		
+					#lokasi {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+		
+					#map { height: 400px; }
+					#qrcode { margin-top: 20px; }
+		
 					body {
 					  font-family: 'Segoe UI', sans-serif;
 					  color: #3b3b3b;
@@ -730,8 +744,8 @@
                     </div>					
                 </div>
 				<div class="ml-auto d-flex align-items-center">
-							  <div id="google_translate_element" class="translate-wrapper"></div>
-							</div>
+					<div id="google_translate_element" class="translate-wrapper"></div>
+				</div>
             </nav>
             <!-- Hero Section -->
             <div class="hero animate-on-scroll" style="position: relative; overflow: hidden;">
@@ -768,7 +782,7 @@
             </div>
         </section>
         <!-- Section: Resources -->
-<!--         <section id="resources" class="textile-section">
+  <!--  <section id="resources" class="textile-section">
             <div class="section-card resources">
                 <h3>Resources</h3>
                 <p>
@@ -974,12 +988,8 @@
 		<!-- </section> -->
 				
 		<!-- Map Section -->
-		<!-- Leaflet Map Section -->
-		<section id="lokasi" class="container py-5 animate-on-scroll">
-			<h2 class="section-title">Our Location</h2>
-			<div id="map" style="height: 450px; border-radius: 8px;"></div>
-
-			<!-- <div class="text-center mt-4"> -->
+		
+		<!-- <div class="text-center mt-4"> -->
 				<!-- <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik." -->
 				   <!-- target="_blank" -->
 				   <!-- class="btn btn-success" -->
@@ -987,11 +997,59 @@
 					<!-- ðŸ“ Chat via WhatsApp for Directions -->
 				<!-- </a> -->
 			<!-- </div> -->
-		</section>
+		
+		<!-- Leaflet Map Section -->
+		<!-- <section id="lokasi" class="container py-5 animate-on-scroll"> -->
+			<!-- <h2 class="section-title">Our Location</h2> -->
+			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>			 -->
+		<!-- </section>	 -->
+		
+		<section id="lokasi" class="container py-5 animate-on-scroll">
+			<h2 class="section-title">Our Location</h2>
+			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
+			<!-- <div id="map"></div> -->
+			<div id="qrcode"></div>
+		</section>	
 
 		<!-- Leaflet CSS & JS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		
+		<script>
+			const destinationLat = -6.910939527850809;
+const destinationLng = 107.55055595048624;
+const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
+
+// Cek apakah elemen #map ada
+if (document.getElementById("map")) {
+	const map = L.map('map').setView([-6.91147, 107.5612], 16);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '© OpenStreetMap contributors'
+	}).addTo(map);
+
+	L.marker([destinationLat, destinationLng])
+		.addTo(map)
+		.bindPopup(`
+			<b>PT Leuwijaya Utama Textile</b><br>
+			Jl. Cibaligo KM 1.75, Cimahi<br>
+			<a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
+				Get Directions
+			</a>
+		`)
+		.openPopup();
+}
+
+// QR Code tetap dibuat terlepas dari peta
+new QRCode(document.getElementById("qrcode"), {
+	text: directionUrl,
+	width: 200,
+	height: 200,
+	colorDark: "#000000",
+	colorLight: "#ffffff",
+	correctLevel: QRCode.CorrectLevel.H
+});
+		</script>
 		
 		<script>
 		function printSection() {
