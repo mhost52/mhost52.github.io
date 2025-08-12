@@ -811,7 +811,7 @@
             <div class="fabric-group">
                 <div class="fabric-card animate-left">
                     <h3>KNITTED FABRICS</h3>
-                    <p>Our knitted fabrics are available in a wide range of weights and constructions, offering versatility for casual wear with a touch of elegance and performance.</p>
+                    <p>Our knitted fabrics are available in a wide range of weights and constructions, offering versatility for casual wear with a touch of elegance and performance.<br/>   <br/></p>
                 </div>
                 <div class="fabric-card animate-left woven">
                     <h3>WOVEN FABRICS</h3>
@@ -901,10 +901,14 @@
 			<div class="text-center mb-4">
 			  <div id="kategori-tabs" class="btn-group" role="group">
 				<button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="WOVEN">Woven</button>
+			    <button class="btn btn-outline-primary kategori-tab" data-kategori="KNITTING">Knitting</button>
 				<button class="btn btn-outline-primary kategori-tab" data-kategori="FORMAL BLACK">Formal Black</button>
 				<button class="btn btn-outline-primary kategori-tab" data-kategori="SUITING">Suiting</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="WOVEN">Woven</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="KNITTING">Knitting</button>
+								
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="MontoCoat">Monto Coat</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="SpecialTreatment">Special Treatment</button> -->
 			  </div>
 			</div>
 
@@ -982,21 +986,23 @@
 
         <!-- Kontak -->
         <section id="kontak" class="container py-5 animate-on-scroll">
-            <h2 class="section-title">Our Contact</h2>
-            <ul class="list-unstyled mx-auto" style="max-width: 600px;">
-                <li><strong>Email:</strong> marketing@leuwitex.co.id</li>
-                <li><strong>Phone:</strong> +62-22-6032710</li>
-                <li><strong>Address:</strong> Jl. Cibaligo KM 1.75 Leuwigajah, Cimahi, Jawa Barat 40533 - Indonesia</li>
-            </ul>
+			<h2 class="section-title">Our Contact</h2>
+			<ul class="list-unstyled mx-auto" style="max-width: 600px;">
+				<li><strong>Email:</strong> 
+					<a href="mailto:marketing@leuwitex.co.id">marketing@leuwitex.co.id</a>
+				</li>
+				<li><strong>Phone:</strong> +62-22-6032710</li>
+				<li><strong>Address:</strong> Jl. Cibaligo KM 1.75 Leuwigajah, Cimahi, Jawa Barat 40533 - Indonesia</li>
+			</ul>
 			<div class="text-center mt-4">
-				<!-- <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik." -->
-				   <!-- target="_blank" -->
-				   <!-- class="btn btn-success" -->
-				   <!-- style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;"> -->
-					<!-- 📍 Chat Us via WhatsApp -->
-				<!-- </a> -->
+				<a href="mailto:marketing@leuwitex.co.id"
+				   class="btn btn-primary"
+				   style="padding: 12px 24px; font-size: 1rem; border-radius: 6px;">
+					Send Email
+				</a>
 			</div>
-        </section>		
+		</section>
+		
 		
 		<!-- Career -->
 		
@@ -1285,12 +1291,15 @@ $("#nextBtn").on("click", function () {
       "KNITTING": [9, 10, 11],
     };
 
-    const grupNamaList = ["FORMAL BLACK", "SUITING", "WOVEN", "KNITTING"];
+    const grupNamaList = ["FORMAL BLACK", "SUITING", "WOVEN", "KNITTING"];//, "Thobe", "MontoCoat", "SpecialTreatment"
     const grupNamaListKeterangan = [
-      "Formal Black fabric is one of our flagship products and areas of specialization. Available in both stretch and non-stretch types, the weight comes within range 50 GSM to 360 GSM. This fabric is commonly used for Abayas, Blazers, Trousers, Headscarves, Dresses and more.",
-      "We offer high-quality suiting fabrics, available in both stretch and non-stretch types, ideal for formal wears such as Blazers, Dress, Pants, and Suits. Additionally, we provide fabric options with water-repellent and absorbent finishes to meet diverse functional needs.",
-      "Our woven fabrics range from 50 GSM to 260 GSM, making them ideal for Dresses, Khimar, Thobe, Head Scarf, Abayas, and more. The material is comfortable, and good resistant to wrinkles.",
-      "Our knitting fabrics are designed for optimal comfort and wrinkle resistance. They can be enhanced with signature fragrances, customized to meet your specific preferences. Comes in weight range of 150 GSM to 270 GSM, these fabrics are ideally suited for Dresses, Headscarves, Inner Caps, Bergo, Leggings, Blouses and more.",
+      "Formal Black fabric is one of our flagship products and areas of specialization. Available in both stretch and non-stretch types, it comes in a wide weight range from 50 GSM to 360 GSM. This fabric is commonly used for Abayas, Blazers, Trousers, Headscarves, Dresses and more.",
+      "We offer high-quality suiting fabrics, available in both stretch and non-stretch types, ideal for formal garments such as Blazers, Pants, and Suits.",
+      "Our woven fabrics range from 50 GSM to 260 GSM, making them ideal for Dresses, Khimars, Thobes, Headscarves, Abayas, and more. The material is comfortable, and good resistant to wrinkles.",
+      "Our knitting fabrics are designed for optimal comfort and wrinkle resistance with weight range of 150 GSM to 270 GSM, these fabrics are ideally suited for Dresses, instant Hijab, Leggings, Blouses and more.",
+	  <!-- "We provide Zibda, a premium fabric specially selected for Thobes with about 140 GSM of weight to showing elegant drape and long-lasting comfort. Our Zibda is a special purpose fabric with exceptional quality.", -->
+	  <!-- "The Monto Coats looks elegantly made with our Moreno Stretch fabric, it carefully chosen to balance elegance, modesty, and comfort. With a soft drape, fancy texture, and lasting durability.", -->
+	  <!-- "Our fabrics can be enhanced with some optional treatment to meet diverse functional needs and to value up your specific preferences such as water repellent, antibacterial, perfumery and also woven selvedge.",	   -->
     ];
 
     function tampilkanProduk() {
