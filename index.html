@@ -15,15 +15,22 @@
 					.single-item-center {
 					  display: flex;
 					  justify-content: center;
-					  width: 100%; /* memastikan elemen mengambil lebar penuh */
-					  padding: 0 1rem; /* memberi ruang di sisi kiri-kanan */
+					  width: 100%;
+					  padding: 0 1rem;
 					}
 
-					.single-item-center > .col-md-4 {
-					  flex: 0 0 50%; /* ubah lebar item jadi 50% dari parent */
+					.single-item-center > .produk-card {
+					  flex: 0 0 50%;
 					  max-width: 50%;
 					}
 
+					/* Responsif di layar kecil */
+					@media (max-width: 768px) {
+					  .single-item-center > .produk-card {
+						flex: 0 0 100%;
+						max-width: 100%;
+					  }
+					}
 		
 					.background-image {
 						position: absolute;
@@ -747,6 +754,8 @@
 			.navbar-transparent {
 			  background-color: transparent;
 			}
+			
+
 
     </style>
     </head>
@@ -957,13 +966,13 @@
 			<!-- Wrapper Produk -->
 			<div class="produk-wrapper position-relative d-flex justify-content-center align-items-center">
 			  <!-- Tombol kiri -->
-			  <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button>
+			  <!-- <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button> -->
 
 			  <!-- Galeri Produk -->
 			  <div id="produk-list" class="row justify-content-center w-100"></div>
 
 			  <!-- Tombol kanan -->
-			  <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button>
+			  <!-- <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button> -->
 			</div>
 			</div>
 		  </div>
