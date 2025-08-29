@@ -12,6 +12,12 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 		
         <style>
+					.card-img-top {
+					  width: 10%;         /* misalnya hanya 80% dari lebar parent */
+					  margin: 0 auto;     /* agar tetap di tengah */
+					  border-radius: 4px; /* opsional, biar lebih lembut */
+					}
+		
 					.single-item-center {
 					  display: flex;
 					  justify-content: center;
@@ -622,9 +628,10 @@
             	}
 				
 			.img-wrapper {			  
-			  padding: 8px; /* beri ruang agar latar tampak */
+			  padding: 2px 2px; /* beri ruang agar latar tampak */
 			  border-radius: 0px; /* opsional, agar lembut di tepi */
 			  display: inline-block;
+			  border-radius: 4px; 
 			}	
 
 			.title-highlight {
@@ -951,11 +958,11 @@
 			<!-- Tabs Kategori -->
 			<div class="text-center mb-4">
 			  <div id="kategori-tabs" class="btn-group" role="group">
-				<button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>
-			    <button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button>
+				<button class="btn btn-outline-primary kategori-tab active" data-kategori="Suiting">Suiting</button>
 				<button class="btn btn-outline-primary kategori-tab" data-kategori="Ladies Woven">Ladies Woven</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="Suiting">Suiting</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="ALL">All Product</button>
 								
 				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button> -->
 				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="MontoCoat">Monto Coat</button> -->
@@ -1326,7 +1333,7 @@
     const $produkList = $("#produk-list");
     const produkPerGroup = 3;
     let currentIndex = 0;
-    let currentKategori = "ALL";
+    let currentKategori = "Suiting";
 	
 	$("#prevBtn").on("click", function () {
   if (currentKategori !== "ALL") {
