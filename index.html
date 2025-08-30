@@ -15,7 +15,7 @@
 					.card-img-top {
 					  width: 10%;         /* misalnya hanya 80% dari lebar parent */
 					  margin: 0 auto;     /* agar tetap di tengah */
-					  border-radius: 4px; /* opsional, biar lebih lembut */
+					  border-radius: 10px; /* opsional, biar lebih lembut */
 					}
 		
 					.single-item-center {
@@ -129,6 +129,7 @@
 					  width: 100%;
 					  height: auto;
 					  object-fit: cover;
+					  border-radius: 8px;
 					}
 					.text-center2 {
 					  font-size: 1.8rem;
@@ -962,11 +963,11 @@
 			<!-- Tabs Kategori -->
 			<div class="text-center mb-4">
 			  <div id="kategori-tabs" class="btn-group" role="group">
-				<button class="btn btn-outline-primary kategori-tab active" data-kategori="Suiting">Suiting</button>
+			    <button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Suiting">Suiting</button>
 				<button class="btn btn-outline-primary kategori-tab" data-kategori="Ladies Woven">Ladies Woven</button>
 				<button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>
-				<button class="btn btn-outline-primary kategori-tab" data-kategori="ALL">All</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>				
 								
 				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button> -->
 				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="MontoCoat">Monto Coat</button> -->
@@ -1337,7 +1338,7 @@
     const $produkList = $("#produk-list");
     const produkPerGroup = 3;
     let currentIndex = 0;
-    let currentKategori = "Suiting";
+    let currentKategori = "ALL";
 	
 	$("#prevBtn").on("click", function () {
   if (currentKategori !== "ALL") {
@@ -1396,7 +1397,7 @@ $("#nextBtn").on("click", function () {
     };
 
     //const grupNamaList = ["FORMAL BLACK", "SUITING", "WOVEN", "KNITTING"];//, "Thobe", "MontoCoat", "SpecialTreatment"
-	const grupNamaList = ["Thobe", "Suiting", "Ladies Woven", "Knitting"];//, "Thobe", "MontoCoat", "SpecialTreatment"
+	const grupNamaList = [ "Suiting", "Ladies Woven", "Knitting", "Thobe"];//, "Thobe", "MontoCoat", "SpecialTreatment"
     const grupNamaListKeterangan = [
 	  "","","",""
       <!-- "Formal Black fabric is one of our flagship products and areas of specialization. Available in both stretch and non-stretch types, it comes in a wide weight range from 50 GSM to 360 GSM. This fabric is commonly used for Abayas, Blazers, Trousers, Headscarves, Dresses and more.", -->
@@ -1435,9 +1436,9 @@ $("#nextBtn").on("click", function () {
         const rowHTML = grup.items.map(item => `
           <div class="col-md-4">
             <div class="card mb-4">
-              <div class="img-wrapper">
+               <!-- <div class="img-wrapper"> -->
                 <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
-              </div>
+               <!-- </div> -->
             </div>
           </div>
         `).join("");
@@ -1447,9 +1448,9 @@ $("#nextBtn").on("click", function () {
 			<div class="single-item-center">
 			  <div class="col-md-4">
 				<div class="card mb-4">
-				  <div class="img-wrapper">
+				  <!-- <div class="img-wrapper"> -->
 					<img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}">
-				  </div>
+				  <!-- </div> -->
 				</div>
 			  </div>
 			</div>
