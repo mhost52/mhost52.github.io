@@ -12,6 +12,30 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 		
         <style>
+		
+					  #lokasi2 {
+						<!-- display: none; -->
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+						text-align: center;
+					  }
+
+					  #lokasi2 .section-title {
+						text-align: center;
+					  }
+
+					  #map {
+						margin: 0 auto;
+						width: 100%;
+						max-width: 800px;
+					  }
+
+					  #qrcode {
+						margin-top: 20px;
+					  }
+
+		
 					.card-img-top {
 					  width: 10%;         /* misalnya hanya 80% dari lebar parent */
 					  margin: 0 auto;     /* agar tetap di tengah */
@@ -63,6 +87,12 @@
 					}
 		
 					#lokasi {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+					
+					#lokasi2 {
 						display: flex;
 						flex-direction: column;
 						align-items: center;
@@ -729,6 +759,18 @@
 			#lokasi:hover {
 			  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
 			}
+			
+			#lokasi2 {
+			  background: linear-gradient(135deg, #dfe9f3, #bcd4e6); /* Biru langit lembut */
+			  border-radius: 12px;
+			  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			  padding: 3rem 2rem;
+			  transition: background 0.3s ease;
+			}
+
+			#lokasi2:hover {
+			  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
+			}
 
 			.translate-wrapper {
 			  text-align: right;
@@ -1115,12 +1157,7 @@
 					<!-- 📍 Chat via WhatsApp for Directions -->
 				<!-- </a> -->
 			<!-- </div> -->
-		
-		<!-- Leaflet Map Section -->
-		<!-- <section id="lokasi" class="container py-5 animate-on-scroll"> -->
-			<!-- <h2 class="section-title">Our Location</h2> -->
-			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>			 -->
-		<!-- </section>	 -->
+				
 		
 		<section id="lokasi" class="container py-5 animate-on-scroll">
 			<h2 class="section-title">Our Location</h2>
@@ -1132,11 +1169,40 @@
 			<!-- <div id="qrcode"></div> -->
 		</section>	
 		
+		<!-- <button id="toggleLokasi" class="btn btn-primary mb-3"> -->
+			<!-- Show Location -->
+		<!-- </button> -->
 
+		
+		<!-- Leaflet Map Section -->
+		<section id="lokasi2" class="container py-5 animate-on-scroll">
+			<!-- <h2 class="section-title">Our Location</h2> -->
+			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>-->			
+			  <!-- <h2 class="section-title">Our Location</h2> -->
+			  <div id="map" style="height: 450px; border-radius: 8px;"></div>
+			  <div id="qrcode" class="mt-4 text-center"></div>
+		</section>
 
 		<!-- Leaflet CSS & JS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		
+		<script>
+		  document.addEventListener("DOMContentLoaded", function () {
+			const toggleBtn = document.getElementById("toggleLokasi");
+			const lokasiSection = document.getElementById("lokasi2");
+
+			toggleBtn.addEventListener("click", function () {
+			  if (lokasiSection.style.display === "none") {
+				lokasiSection.style.display = "block";
+				toggleBtn.textContent = "Show Location";
+			  } else {
+				lokasiSection.style.display = "none";
+				toggleBtn.textContent = "Hide Location";
+			  }
+			});
+		  });
+		</script>
 		
 		<script>
 		window.addEventListener('scroll', function () {
@@ -1152,6 +1218,7 @@
 		</script>
 		
 		<script>
+		document.addEventListener("DOMContentLoaded", function () {
 			const destinationLat = -6.910939527850809;
 			const destinationLng = 107.55055595048624;
 			const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
@@ -1185,6 +1252,7 @@
 				colorLight: "#ffffff",
 				correctLevel: QRCode.CorrectLevel.H
 			});
+		});
 		</script>
 		
 		<script>
@@ -1604,8 +1672,6 @@ $("#nextBtn").on("click", function () {
     observer.observe(el);
   });
 });
-
-
 
 
         </script>
