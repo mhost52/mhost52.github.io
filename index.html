@@ -1225,22 +1225,24 @@
 
 			// Cek apakah elemen #map ada
 			if (document.getElementById("map")) {
-				const map = L.map('map').setView([-6.91147, 107.5612], 16);
+			  const map = L.map('map').setView([destinationLat, destinationLng], 16);
 
-				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '© OpenStreetMap contributors'
-				}).addTo(map);
+			  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '© OpenStreetMap contributors'
+			  }).addTo(map);
 
-				L.marker([destinationLat, destinationLng])
-					.addTo(map)
-					.bindPopup(`
-						<b>PT Leuwijaya Utama Textile</b><br>
-						Jl. Cibaligo KM 1.75, Cimahi<br>
-						<a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
-							Get Directions
-						</a>
-					`)
-					.openPopup();
+			  L.marker([destinationLat, destinationLng])
+				.addTo(map)
+				.bindPopup(`
+				  <div style="text-align: center;">
+					<b>PT Leuwijaya Utama Textile</b><br>
+					Jl. Cibaligo KM 1.75, Cimahi<br>
+					<a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
+					  Get Directions
+					</a>
+				  </div>
+				`)
+				.openPopup();
 			}
 
 			// QR Code tetap dibuat terlepas dari peta
@@ -1535,50 +1537,48 @@ $("#nextBtn").on("click", function () {
       });
 
     } else {
-  const produkFiltered = kategoriMap[currentKategori].map(index => produk[index]);
-  const grupIndex = grupNamaList.indexOf(currentKategori);
+	  const produkFiltered = kategoriMap[currentKategori].map(index => produk[index]);
+	  const grupIndex = grupNamaList.indexOf(currentKategori);
 
-  const grupDeskripsiHTML = `
-    <div class="col-12 text-center mb-4">
-      <h5 class="text-center2">${grupNamaList[grupIndex]}</h5>
-      <p class="card-text" style="font-size: 1.2rem;">${grupNamaListKeterangan[grupIndex]}</p>
-    </div>
-  `;
-  $produkList.append(grupDeskripsiHTML);
+	  const grupDeskripsiHTML = `
+		<div class="col-12 text-center mb-4">
+		  <h5 class="text-center2">${grupNamaList[grupIndex]}</h5>
+		  <p class="card-text" style="font-size: 1.2rem;">${grupNamaListKeterangan[grupIndex]}</p>
+		</div>
+	  `;
+	  $produkList.append(grupDeskripsiHTML);
 
-  if (produkFiltered.length === 1) {
-    const item = produkFiltered[0];
-    $produkList.append(`
-      <div class="single-item-center">
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="img-wrapper">
-              <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
-            </div>
-          </div>
-        </div>
-      </div>
-    `);
-  } else {
-    const rowHTML = produkFiltered.map(item => `
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="img-wrapper">
-            <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
-          </div>
-        </div>
-      </div>
-    `).join("");
+	  if (produkFiltered.length === 1) {
+		const item = produkFiltered[0];
+		$produkList.append(`
+		  <div class="single-item-center">
+			<div class="col-md-4">
+			  <div class="card mb-4">
+				<div class="img-wrapper">
+				  <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+				</div>
+			  </div>
+			</div>
+		  </div>
+		`);
+	  } else {
+		const rowHTML = produkFiltered.map(item => `
+		  <div class="col-md-4">
+			<div class="card mb-4">
+			  <div class="img-wrapper">
+				<img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+			  </div>
+			</div>
+		  </div>
+		`).join("");
 
-    $produkList.append(`<div class="row justify-content-center">${rowHTML}</div>`);
-  }
-}
+		$produkList.append(`<div class="row justify-content-center">${rowHTML}</div>`);
+	  }
+	}
 
-    $produkList.fadeIn(300);
-  });
-}
-
-
+		$produkList.fadeIn(300);
+	  });
+	}
 
     // Tab kategori
     $(".kategori-tab").on("click", function () {
