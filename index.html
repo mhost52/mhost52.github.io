@@ -1172,7 +1172,11 @@
 		<!-- <button id="toggleLokasi" class="btn btn-primary mb-3"> -->
 			<!-- Show Location -->
 		<!-- </button> -->
-
+		
+		<!-- <button id="showMapBtn">Show Map</button> -->
+		<!-- <section id="lokasi2" class="container py-5 animate-on-scroll d-none"> -->
+		  <!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
+		<!-- </section> -->
 		
 		<!-- Leaflet Map Section -->
 		<section id="lokasi2" class="container py-5 animate-on-scroll">
@@ -1180,12 +1184,33 @@
 			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>-->			
 			  <!-- <h2 class="section-title">Our Location</h2> -->
 			  <div id="map" style="height: 450px; border-radius: 8px;"></div>
-			  <div id="qrcode" class="mt-4 text-center"></div>
+			  <!-- <div id="qrcode" class="mt-4 text-center"></div> -->
 		</section>
 
 		<!-- Leaflet CSS & JS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		
+		<script>
+		  let map;
+
+			document.getElementById('showMapBtn').addEventListener('click', function () {
+			  const lokasiSection = document.getElementById('lokasi2');
+			  lokasiSection.classList.remove('d-none');
+
+			  // Tunggu layout selesai render
+			  setTimeout(() => {
+				// Inisialisasi map setelah kontainer terlihat
+				map = new google.maps.Map(document.getElementById("map"), {
+				  center: { lat: -6.914744, lng: 107.609810 }, // Contoh: Bandung
+				  zoom: 14,
+				});
+			  }, 300); // Delay agar layout stabil
+			});
+
+
+		</script>
+
 		
 		<script>
 		  document.addEventListener("DOMContentLoaded", function () {
@@ -1525,7 +1550,7 @@ $("#nextBtn").on("click", function () {
 			  <div class="col-md-4">
 				<div class="card mb-4">
 				  <!-- <div class="img-wrapper"> -->
-					<img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}">
+					<img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}" loading="lazy">
 				  <!-- </div> -->
 				</div>
 			  </div>
@@ -1555,7 +1580,7 @@ $("#nextBtn").on("click", function () {
 			<div class="col-md-4">
 			  <div class="card mb-4">
 				<div class="img-wrapper">
-				  <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+				  <img src="${item.gambar}" class="card-img-top" alt="${item.nama}" loading="lazy">
 				</div>
 			  </div>
 			</div>
@@ -1566,7 +1591,7 @@ $("#nextBtn").on("click", function () {
 		  <div class="col-md-4">
 			<div class="card mb-4">
 			  <div class="img-wrapper">
-				<img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+				<img src="${item.gambar}" class="card-img-top" alt="${item.nama}" loading="lazy">
 			  </div>
 			</div>
 		  </div>
