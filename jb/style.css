@@ -53,18 +53,31 @@ nav a:hover {
   margin-bottom: 2rem;
 }
 
+/* .cta-button { */
+  /* background-color: white; */
+  /* color: #0073e6; */
+  /* padding: 0.75rem 1.5rem; */
+  /* border-radius: 5px; */
+  /* text-decoration: none; */
+  /* font-weight: bold; */
+/* } */
+
 .cta-button {
-  background-color: white;
-  color: #0073e6;
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  display: inline-block;
+  margin-top: 40px; /* Atur sesuai kebutuhan */
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
 }
 
 .cta-button:hover {
-  background-color: #e6f2ff;
+  background-color: #ADD8E6; /* Light Blue */
+  color: #003366; /* opsional: teks tetap kontras */
 }
+
 
 .psychotest .cta-button {
   margin-top: 1.5rem;
@@ -117,18 +130,34 @@ nav a:hover {
   font-size: 1.1rem;
 }
 
+/* .recruiter-grid { */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
+  /* gap: 2rem; */
+  /* margin-bottom: 2rem; */
+/* } */
+
+/* .recruiter-item { */
+  /* background-color: #e6f2ff; */
+  /* padding: 1.5rem; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.05); */
+/* } */
+
 .recruiter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  display: flex;
+  gap: 20px; /* jarak antar item */
 }
 
 .recruiter-item {
+  flex: 1;
+  padding: 20px;
   background-color: #e6f2ff;
-  padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .contact {
