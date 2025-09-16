@@ -12,6 +12,17 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 		
         <style>
+					  .zoomable {
+						  width: 300px;
+						  transition: transform 0.3s ease;
+						  cursor: pointer;
+						}
+
+						.zoomed {
+						  transform: scale(2);
+						  z-index: 10;
+						  position: relative;
+						}	
 		
 					  #lokasi2 {
 						<!-- display: none; -->
@@ -1125,7 +1136,7 @@
 		  <!-- <p class="text-center mb-4">Explore exciting roles and grow with us in the textile industry.</p> -->
 		  <!-- <div class="career-opening" style="max-width: 700px; margin: 0 auto;"> -->
 		   
-		<!-- <h4 class="mt-4">üåç Arabic Translator</h4> -->
+		<!-- <h4 class="mt-4">??ç Arabic Translator</h4> -->
 		<!-- <ul class="list-unstyled"> -->
 		  <!-- <li><strong>Role Summary:</strong> Translate textile-related documents, marketing materials, and product specs between Arabic and English/Indonesian.</li> -->
 		  
@@ -1152,7 +1163,7 @@
 				   <!-- target="_blank" -->
 				   <!-- class="btn btn-success" -->
 				   <!-- style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;"> -->
-					<!-- üìç Chat via WhatsApp for Directions -->
+					<!-- ??ç Chat via WhatsApp for Directions -->
 				<!-- </a> -->
 			<!-- </div> -->
 				
@@ -1542,7 +1553,8 @@ $("#nextBtn").on("click", function () {
           <div class="col-md-4">
             <div class="card mb-4">
                <!-- <div class="img-wrapper"> -->
-                <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+                <!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				<img src="${item.gambar}" alt="${item.nama}" class="zoomable" onclick="toggleZoom(this)">
                <!-- </div> -->
             </div>
           </div>
@@ -1554,7 +1566,8 @@ $("#nextBtn").on("click", function () {
 			  <div class="col-md-4">
 				<div class="card mb-4">
 				  <!-- <div class="img-wrapper"> -->
-					<img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}">
+					<!-- <img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}"> -->
+					<img src="${grup.items[0].gambar}" alt="${grup.items[0].gambar}" class="zoomable" onclick="toggleZoom(this)">
 				  <!-- </div> -->
 				</div>
 			  </div>
@@ -1584,7 +1597,8 @@ $("#nextBtn").on("click", function () {
 			<div class="col-md-4">
 			  <div class="card mb-4">
 				<div class="img-wrapper">
-				  <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+				  <!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				  <img src="${item.gambar}" alt="${item.nama}" class="zoomable" onclick="toggleZoom(this)">
 				</div>
 			  </div>
 			</div>
@@ -1595,7 +1609,8 @@ $("#nextBtn").on("click", function () {
 		  <div class="col-md-4">
 			<div class="card mb-4">
 			  <div class="img-wrapper">
-				<img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+				<!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				<img src="${item.gambar}" class="zoomable" onclick="toggleZoom(this)" alt="${item.nama}">
 			  </div>
 			</div>
 		  </div>
@@ -1705,21 +1720,26 @@ $("#nextBtn").on("click", function () {
 
         </script>
 
+		<script>
+		  function toggleZoom(img) {
+			img.classList.toggle('zoomed');
+		  }
+		</script>
 
 		<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,ar,id',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
+		  function googleTranslateElementInit() {
+			new google.translate.TranslateElement({
+			  pageLanguage: 'en',
+			  includedLanguages: 'en,ar,id',
+			  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+			}, 'google_translate_element');
+		  }
+		</script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
         <!-- Tombol Back to Top -->
-        <button id="backToTop">‚Üë Back to Top</button>
+        <button id="backToTop">‚?? Back to Top</button>
     </body>
 </html>
