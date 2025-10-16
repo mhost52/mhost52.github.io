@@ -820,7 +820,17 @@
 			  background-color: transparent;
 			}
 			
-
+			
+			#lokasi2 {
+			  visibility: hidden;
+			  height: 0;
+			  overflow: hidden;
+			  transition: height 0.5s ease, visibility 0.5s ease;
+			}
+			#lokasi2.show {
+			  visibility: visible;
+			  height: 450px;
+			}
 
     </style>
     </head>
@@ -1120,6 +1130,10 @@
 					<input type="email" name="_replyto" id="email" class="form-control" required>
 				</div>
 				<div class="mb-3">
+					<label for="phone" class="form-label">Nomor Telepon:</label>
+					<input type="tel" name="phone" class="form-control" required>
+				</div>
+				<div class="mb-3">
 					<label for="message" class="form-label">Message</label>
 					<textarea name="message" id="message" rows="5" class="form-control" required></textarea>
 				</div>
@@ -1172,7 +1186,8 @@
 			<h2 class="section-title">Our Location</h2>
 			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
 			<div class="text-center">
-				<img src="qrpic.webp" alt="QR Code Location" class="img-fluid mt-3" style="max-width: 300px;">
+				<!-- <img src="qrpic.webp" alt="QR Code Location" class="img-fluid mt-3" style="max-width: 300px;">-->
+				<img id="qrTrigger" src="qrpic.webp" alt="QR Code Location" class="img-fluid mt-3" style="max-width: 300px;">
      		</div>
 			<!-- <div id="map"></div> -->
 			<!-- <div id="qrcode"></div> -->
@@ -1218,6 +1233,22 @@
 			});
 
 
+		</script>
+		
+		<script>
+		  document.addEventListener("DOMContentLoaded", function () {
+			const qrImage = document.getElementById("qrTrigger");
+			const lokasi2 = document.getElementById("lokasi2");
+
+			qrImage.addEventListener("click", function () {
+			  lokasi2.classList.add("show");
+
+			  // Trigger resize agar Leaflet tahu ukuran kontainer
+			  setTimeout(() => {
+				window.dispatchEvent(new Event('resize'));
+			  }, 600);
+			});
+		  });
 		</script>
 
 		
