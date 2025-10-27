@@ -1191,7 +1191,7 @@
      		</div>
 			<!-- <div id="map"></div> -->
 			<!-- <div id="qrcode"></div> -->
-		</section>	
+		</section>
 		
 		<!-- <button id="toggleLokasi" class="btn btn-primary mb-3"> -->
 			<!-- Show Location -->
@@ -1235,22 +1235,60 @@
 
 		</script>
 		
-		<script>
-		  document.addEventListener("DOMContentLoaded", function () {
-			const qrImage = document.getElementById("qrTrigger");
-			const lokasi2 = document.getElementById("lokasi2");
+		
+		<!-- THIS -->
+		<!-- <script> -->
+		  <!-- document.addEventListener("DOMContentLoaded", function () { -->
+			<!-- const qrImage = document.getElementById("qrTrigger"); -->
+			<!-- const lokasi2 = document.getElementById("lokasi2"); -->
 
-			qrImage.addEventListener("click", function () {
-			  lokasi2.classList.add("show");
+			<!-- qrImage.addEventListener("click", function () { -->
+			  <!-- lokasi2.classList.add("show"); -->
 
-			  // Trigger resize agar Leaflet tahu ukuran kontainer
-			  setTimeout(() => {
-				window.dispatchEvent(new Event('resize'));
-			  }, 600);
-			});
+			  <!-- // Trigger resize agar Leaflet tahu ukuran kontainer -->
+			  <!-- setTimeout(() => { -->
+				<!-- window.dispatchEvent(new Event('resize')); -->
+			  <!-- }, 600); -->
+			<!-- }); -->
+		  <!-- }); -->
+		<!-- </script> -->
+		<!-- <script> -->
+		  <!-- document.addEventListener("DOMContentLoaded", function () { -->
+			<!-- const qrImage = document.getElementById("qrTrigger"); -->
+			<!-- const lokasi2 = document.getElementById("lokasi2"); -->
+
+			<!-- qrImage.addEventListener("click", function () { -->
+			  <!-- lokasi2.classList.add("show"); -->
+
+			  <!-- // Scroll ke elemen lokasi2 agar fokus ke peta -->
+			  <!-- lokasi2.scrollIntoView({ behavior: "smooth", block: "start" }); -->
+
+			  <!-- // Trigger resize agar Leaflet tahu ukuran kontainer -->
+			  <!-- setTimeout(() => { -->
+				<!-- window.dispatchEvent(new Event('resize')); -->
+			  <!-- }, 600); -->
+			<!-- }); -->
+		  <!-- }); -->
+		<!-- </script> -->
+	    <script>
+		document.addEventListener("DOMContentLoaded", function () {
+		  const qrImage = document.getElementById("qrTrigger");
+		  const lokasi2 = document.getElementById("lokasi2");
+
+		  qrImage.addEventListener("click", function () {
+			lokasi2.classList.add("show");
+
+			// Tambahkan delay agar elemen benar-benar terlihat dan tinggi sudah dihitung
+			setTimeout(() => {
+			  window.dispatchEvent(new Event('resize')); // Trigger Leaflet untuk hitung ulang ukuran
+			  lokasi2.scrollIntoView({ behavior: "smooth", block: "start" });
+			}, 500); // Delay 500ms agar layout stabil
 		  });
+		});
 		</script>
 
+
+		
 		
 		<script>
 		  document.addEventListener("DOMContentLoaded", function () {
