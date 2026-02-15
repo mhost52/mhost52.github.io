@@ -836,7 +836,6 @@
 			  height: 450px;
 			}
 			
-			
 			.nav-item {
 			  position: relative; /* supaya dropdown bisa ditempatkan relatif ke menu induk */
 			}
@@ -940,329 +939,46 @@
 					<!-- <div id="google_translate_element" class="translate-wrapper"></div> -->
 				<!-- </div> -->
             </nav>
-            <!-- Hero Section -->
-            <div class="hero animate-on-scroll" style="position: relative; overflow: hidden;">
-                <img src="lwhead.webp" alt="Decor" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0;" />
-                <h1 style="color: #FFD700; text-shadow: 1px 1px 2px #B8860B, 0 0 10px #FFD700, 0 0 20px #FFA500;"> Innovation for the Future</h1>
-                <p>PT Leuwijaya Utama Textile</p>
-                <a href="#tentang" class="btn btn-primary mt-3">Our Profile</a>
-            </div>
-			
-			<div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;">
-			  <div style="display: flex; align-items: center; margin-right: 20px;">
-				<img src="logo STARLET slv.png" alt="Starlet Animation" style="height: 80px; width: auto; position: relative; z-index: 1;" />
-			  </div>
-			  <div>
-				<h2 style="font-size: 18px; color: #FFFFFF; text-shadow: 1px 1px 2px #888, 0 0 10px #FFF; margin: 0;">
-				  Best quality polyester fabric,<br>Starlet is the answer
-				</h2>
+            						
+        </section>
+        
+        
+       <section id="produk" class="container py-5">
+		  <div class="container">
+			<div id="sectionToPrintProduct">
+			<h2 class="section-title">Our Products</h2>
+
+			<!-- Tabs Kategori -->
+			<div class="text-center mb-4">
+			  <div id="kategori-tabs" class="btn-group" role="group">
+			    <button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Men Suiting">Men Suiting</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Ladies Woven">Ladies Woven</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button>
+				<button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>				
+								
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="MontoCoat">Monto Coat</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="SpecialTreatment">Special Treatment</button> -->
 			  </div>
 			</div>
-						
-        </section>
-        <!-- Tentang Kami -->
-        <section id="tentang" class="container py-5 animate-on-scroll" style="position: relative; overflow: hidden; min-height: 400px; padding-top: 80px; padding-bottom: 80px;">
-			<!-- Background image via CSS -->
-			<div class="background-image"></div>
-			<!-- Konten teks di atas background -->
-			<div style="position: relative; z-index: 1;">		
-				<h2 class="section-title">ABOUT COMPANY</h2>
-				<p class="text-center" style="
-				color: black;				
-				text-shadow: 1px 1px 3px gray, 0 0 5px #ffd700;
-				padding: 20px;
-				">
-				PT. Leuwijaya Utama Textile was founded since 1987 in Bandung as a downstream manufacturer that produces high quality polyester fabric. We are a leading integrated textile company whose operations cover the entire spectrum of textile manufacturing, including weaving,&nbsp dyeing,&nbsp;and&nbsp;finishing.
-				<br/>
-				Along with the growth and rising demand for textile products in the era of international trade, we are proud to be part of the global market community by contributing high-quality textiles to international market.
-			</p>
+
+			<!-- Wrapper Produk -->
+			<div class="produk-wrapper position-relative d-flex justify-content-center align-items-center">
+			  <!-- Tombol kiri -->
+			  <!-- <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button> -->
+
+			  <!-- Galeri Produk -->
+			  <div id="produk-list" class="row justify-content-center w-100"></div>
+
+			  <!-- Tombol kanan -->
+			  <!-- <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button> -->
 			</div>
+			</div>
+		  </div>
+		  <!-- <button onclick="printSection2()">Print Products</button> -->
 		</section>
-
-        <section id="aboutdetail" class="container py-5" style="margin-top: -80px; position: relative; z-index: 2;">
-            <div class="fabric-group">
-                <div class="fabric-card animate-left">
-                    <h3>KNITTED FABRICS</h3>
-                    <p>Our knitted fabrics are available in a wide range of weights and constructions, offering versatility for moslem wear & casual wear with a touch of elegance and performance.<br/>   <br/></p>
-                </div>
-				
-				<div class="fabric-card animate-left certificate">
-                    <h3><br/><br/><center><a href="#certificate" style="color:#3B3B1F; font-weight:bold; text-decoration:none;">OUR CERTIFICATES</a><center><br/><br/></h3>                    
-                </div>
-				
-                <div class="fabric-card animate-left woven">
-                    <h3>WOVEN FABRICS</h3>
-                    <p>We produce 100% Polyester. Our products are woven, ladies items and men suiting items in formal black and plain dyed. Our formal black fabric is highly regarded in the market for its exceptional quality. In addition, we also provide Zibda</p>
-                </div>
-            </div>
-        </section>
-        <!-- Section: Resources -->
-  <!--  <section id="resources" class="textile-section">
-            <div class="section-card resources">
-                <h3>Resources</h3>
-                <p>
-                    We pay special attention to the company's resources as we realize that the production of high quality textile must stem from the excellent quality of employees involved, raw materials, and production facilities.
-                </p>
-            </div>
-        </section> -->
-
-		
-		<!-- <section id="resources" class="container py-5 animate-on-scroll"> -->
-		  <!-- <div class="resources-wrapper" style="display: flex; flex-direction: row; align-items: center; gap: 50px; flex-wrap: wrap;"> -->
-			<!-- <div style="flex: 1; min-width: 300px;"> -->
-			  <!-- <h2 class="section-title">Resources</h2> -->
-			  <!-- <p class="text-center"> -->
-				<!-- We pay special attention to the company's resources as we realize that the production of high quality textile must stem from the excellent quality of employees involved, raw materials, and production facilities. -->
-			  <!-- </p> -->
-			<!-- </div> -->
-			<!-- <div style="flex: 1; min-width: 300px; text-align: center;"> -->
-			  <!-- <img src="image_resources02.jpg" alt="Company Image" style="width: 100%; height: auto;" /> -->
-			<!-- </div> -->
-		  <!-- </div> -->
-		<!-- </section> -->
-
-
         
-        <!-- <section id="career" class="container py-5 animate-on-scroll"> -->
-		  <!-- <div class="career-wrapper" style="display: flex; flex-direction: row; align-items: center; gap: 50px; flex-wrap: wrap;"> -->
-			<!-- <div style="flex: 1; min-width: 300px;"> -->
-			  <!-- <h2 class="section-title">Research and Development</h2> -->
-			  <!-- <p> -->
-				<!-- The key factor for the future of PT. Leuwijaya Utama Textile is research and development (R&D). It is through this department that we will be ready to meet the challenges of the future, by conducting various experiments -->
-				<!-- and applying new techniques for the creation of innovative, new fancy items. -->
-			  <!-- </p> -->
-			  <!-- <p>The principal policies for the R&D department are:</p> -->
-			  <!-- <ul> -->
-				<!-- <li>Strengthening the basis and exploration of research in accordance with the company's long-term vision</li> -->
-				<!-- <li>Reinforcing and widening the development of production technology</li> -->
-				<!-- <li>Identifying and realizing products with higher value and quality, based on customer requests</li> -->
-			  <!-- </ul> -->
-			  <!-- <p>The R&D covers the following aspects:</p> -->
-			  <!-- <ul> -->
-				<!-- <li>Fabric pattern construction design</li>				 -->
-				<!-- <li>Application of technology to create special effects on finished goods</li> -->
-			  <!-- </ul> -->
-			  
-			<!-- </div> -->
-			<!-- <div style="flex: 1; min-width: 300px; text-align: center;"> -->
-			  <!-- <img src="image_rnd03.jpg" alt="Company Image" style="width: 100%; height: auto;" /> -->
-			<!-- </div> -->
-		  <!-- </div> -->
-		<!-- </section> -->
-
-        
-        <!-- <section id="production" class="container py-5 animate-on-scroll"> -->
-		  <!-- <div class="container"> -->
-			<!-- <div class="production-wrapper" style="display: flex; flex-direction: row; align-items: center; gap: 50px; flex-wrap: wrap;"> -->
-			  <!-- <div style="flex: 1; min-width: 300px;"> -->
-				<!-- <h2 class="section-title">Production and Machineries</h2> -->
-				<!-- <p> -->
-				  <!-- In terms of production, PT. Leuwijaya Utama Textile emphasizes on the concept of 'achieving customer satisfaction through high quality product'. To achieve high quality product, the raw materials are carefully selected -->
-				  <!-- and examined. This also applies to the supplier concerned, for such is crucial to ensure the continuity of supply. Serious attention is also given to quality control over each stages of the production process; the -->
-				  <!-- production schedule and plan are determined in precise manner; and last but not least, the improvement of employees' skill in accordance with their respective fields continuously. -->
-				<!-- </p> -->
-			  <!-- </div> -->
-			  <!-- <div style="flex: 1; min-width: 300px; text-align: center;"> -->
-				<!-- <img src="image_production03.jpg" alt="Company Image" style="width: 100%; height: auto;" /> -->
-			  <!-- </div> -->
-			<!-- </div> -->
-		  <!-- </div> -->
-		<!-- </section> -->
-        <!-- Produk -->
-       <!-- <section id="produk" class="container py-5"> -->
-		  <!-- <div class="container"> -->
-			<!-- <div id="sectionToPrintProduct"> -->
-			<!-- <h2 class="section-title">Our Products</h2> -->
-
-			<!-- <div class="text-center mb-4"> -->
-			  <!-- <div id="kategori-tabs" class="btn-group" role="group"> -->
-			    <!-- <button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button> -->
-				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Men Suiting">Men Suiting</button> -->
-				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Ladies Woven">Ladies Woven</button> -->
-				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button> -->
-				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>				 -->
-				
-			  <!-- </div> -->
-			<!-- </div> -->
-
-			<!-- <div class="produk-wrapper position-relative d-flex justify-content-center align-items-center"> -->
-			 
-			  <!-- <div id="produk-list" class="row justify-content-center w-100"></div> -->
-
-			 <!-- </div> -->
-			<!-- </div> -->
-		  <!-- </div> -->
-		<!-- </section> -->
-        <!-- Certificate -->
-        <section id="certificate" class="container py-5 animate-on-scroll" style="background: linear-gradient(to right, #f8f9fc, #e3e6ea, #d1d9e6); border-radius: 16px;">
-			<div id="sectionToPrint">
-			<div class="container">
-                <h2 class="section-title">Certificate</h2>
-                <div class="row justify-content-center">
-                    <!-- ISO Certificate -->
-                    <div class="col-md-5 mb-3 text-center">
-                        <h4 class="fw-bold text-primary mb-2 d-inline-block" style="background-color: #e3f2fd; padding: 8px 20px; border-radius: 50px; font-family: 'Segoe UI', sans-serif;">ISO 9001 : 2015</h4>
-                        <img src="ISO.webp" alt="Certificate 1" class="img-fluid rounded shadow img-hover-zoom w-75 mx-auto d-block" />
-                    </div>
-                    <!-- Halal Certificate -->
-                    <div class="col-md-5 mb-3 text-center">
-                        <h4 class="fw-bold text-primary mb-2 d-inline-block" style="background-color: #e3f2fd; padding: 8px 20px; border-radius: 50px; font-family: 'Segoe UI', sans-serif;">HALAL INDONESIA</h4>
-                        <img src="Halal.webp" alt="Certificate 2" class="img-fluid rounded shadow img-hover-zoom w-75 mx-auto d-block" />
-                    </div>
-                </div>
-            </div>
-			</div>			
-			<!-- <button onclick="printSection()">Print Certificates</button> -->
-        </section>
-		
-		
-        <!-- Our Value -->
-        <section id="value" class="container py-5 animate-on-scroll">
-            <h2 class="section-title">Our Value</h2>
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-8 text-center">
-                    <h4 class="font-weight-bold text-primary mb-3">Vision</h4>
-                    <p class="lead text-muted">Become a global market trend setter through integrated textile products with high quality and the best service.</p>
-                </div>
-            </div>
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-8 text-center">
-                    <h4 class="font-weight-bold text-primary mb-3">Mission</h4>
-                    <p class="lead text-muted">
-                        To produce good quality achievement items supported by consistent Grade A achievements in weaving, dyeing, and on-time delivery, while maintaining a zero-complaint rate and meeting global marketing objectives.
-                    </p>
-                </div>
-            </div>
-        </section>
-        <!-- market -->
-
-        <section id="market" class="container py-5 position-relative" style="background-image: url('petadunia.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; border-radius: 8px;">
-            <!-- Overlay -->
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1; border-radius: 8px;"></div>
-            <!-- Content -->
-            <div style="position: relative; z-index: 2;">
-                <h2 class="section-title text-center mb-4">Our Market</h2>
-                <div class="row justify-content-center mb-5">
-                    <div class="col-md-8 text-center">
-                        <p class="lead">Besides serving the domestic market, Leuwitex also export the products to international countries</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kontak -->
-        <section id="kontak" class="container py-5 animate-on-scroll">
-			<h2 class="section-title">Our Contact</h2>
-			<ul class="list-unstyled mx-auto" style="max-width: 600px;">
-				<li><strong>Email:</strong> 
-					<a href="mailto:marketing@leuwitex.co.id">marketing@leuwitex.co.id</a>
-				</li>
-				<li><strong>Phone:</strong> +62-22-6032710</li>
-				<li><strong>Address:</strong> Jl. Cibaligo KM 1.75 Leuwigajah, Cimahi, Jawa Barat 40533 - Indonesia</li>
-			</ul>
-			
-			<form action="https://formspree.io/f/mzzvokyz" method="POST" style="max-width: 600px;" class="mx-auto mt-4">
-				
-				<div class="mb-3">
-					<label for="name" class="form-label">Your Company</label>
-					<input type="text" name="company" id="company" class="form-control" required>
-				</div>
-				
-				<div class="mb-3">
-					<label for="name" class="form-label">Your Country</label>
-					<input type="text" name="country" id="country" class="form-control" required>
-				</div>
-				
-				<div class="mb-3">
-					<label for="name" class="form-label">Your Name</label>
-					<input type="text" name="name" id="name" class="form-control" required>
-				</div>
-				<div class="mb-3">
-					<label for="email" class="form-label">Your Email</label>
-					<input type="email" name="_replyto" id="email" class="form-control" required>
-				</div>
-				<div class="mb-3">
-					<label for="phone" class="form-label">Your Phone Number</label>
-					<input type="tel" name="phone" class="form-control" required>
-				</div>
-				<div class="mb-3">
-					<label for="message" class="form-label">Message</label>
-					<textarea name="message" id="message" rows="5" class="form-control" required></textarea>
-				</div>
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary">Send Message</button>
-				</div>
-			</form>
-		</section>
-		
-		<!-- Career -->
-		
-		<!-- <section id="career" class="container py-5 animate-on-scroll"> -->
-		  <!-- <h2 class="section-title">Career Opportunities</h2> -->
-		  <!-- <p class="text-center mb-4">Explore exciting roles and grow with us in the textile industry.</p> -->
-		  <!-- <div class="career-opening" style="max-width: 700px; margin: 0 auto;"> -->
-		   
-		<!-- <h4 class="mt-4">ð?? Arabic Translator</h4> -->
-		<!-- <ul class="list-unstyled"> -->
-		  <!-- <li><strong>Role Summary:</strong> Translate textile-related documents, marketing materials, and product specs between Arabic and English/Indonesian.</li> -->
-		  
-		  <!-- <li><strong>Requirements:</strong> -->
-			<!-- <ul style="margin-left: 20px;"> -->
-			  <!-- <li>Fluent in Arabic and English (spoken and written)</li> -->
-			  <!-- <li>Experience in translation or localization, preferably in textile/fashion</li> -->
-			  <!-- <li>Attention to detail and cultural sensitivity</li> -->
-			<!-- </ul> -->
-		  <!-- </li> -->
-		  
-		  <!-- <li><strong>Employment Type:</strong> Full-time / Contract</li> -->
-		  <!-- <li><strong>Location:</strong> Bandung or Remote</li> -->
-		<!-- </ul> -->
-
-			<!-- <p class="mt-4"><strong>How to Apply:</strong> Send your CV and portfolio to <a href="mailto:hrd@leuwitex.co.id">hrd@leuwitex.co.id</a></p> -->
-		  <!-- </div> -->
-		<!-- </section> -->
-				
-		<!-- Map Section -->
-		
-		<!-- <div class="text-center mt-4"> -->
-				<!-- <a href="https://wa.me/6289619850123?text=Halo%20PT%20Leuwijaya%2C%20saya%20ingin%20menanyakan%20lokasi%20dan%20navigasi%20ke%20pabrik." -->
-				   <!-- target="_blank" -->
-				   <!-- class="btn btn-success" -->
-				   <!-- style="background-color: #25D366; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 6px;"> -->
-					<!-- ð?? Chat via WhatsApp for Directions -->
-				<!-- </a> -->
-			<!-- </div> -->
-				
-		
-		<section id="lokasi" class="container py-5 animate-on-scroll">
-			<h2 class="section-title">Our Location</h2>
-			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
-			<div class="text-center">
-				<!-- <img src="qrpic.webp" alt="QR Code Location" class="img-fluid mt-3" style="max-width: 300px;">-->
-				<img id="qrTrigger" src="qrpic.webp" alt="QR Code Location" class="img-fluid mt-3" style="max-width: 300px;">
-     		</div>
-			<!-- <div id="map"></div> -->
-			<!-- <div id="qrcode"></div> -->
-		</section>
-		
-		<!-- <button id="toggleLokasi" class="btn btn-primary mb-3"> -->
-			<!-- Show Location -->
-		<!-- </button> -->
-		
-		<!-- <button id="showMapBtn">Show Map</button> -->
-		<!-- <section id="lokasi2" class="container py-5 animate-on-scroll d-none"> -->
-		  <!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
-		<!-- </section> -->
-		
-		<!-- Leaflet Map Section -->
-		<section id="lokasi2" class="container py-5 animate-on-scroll">
-			<!-- <h2 class="section-title">Our Location</h2> -->
-			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>-->			
-			  <!-- <h2 class="section-title">Our Location</h2> -->
-			  <div id="map" style="height: 450px; border-radius: 8px;"></div>
-			  <!-- <div id="qrcode" class="mt-4 text-center"></div> -->
-		</section>
-
 		<!-- Leaflet CSS & JS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
