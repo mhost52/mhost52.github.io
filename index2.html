@@ -421,17 +421,29 @@
 					  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
 					<!-- } -->
 					
-				 .navbar {
+				 <!-- .navbar { -->
+				  <!-- background: linear-gradient( -->
+					<!-- 135deg, -->
+					<!-- rgba(10, 10, 10, 0.3) 5%,        /* Hitam sangat sedikit dan lebih transparan */ -->
+					<!-- rgba(58, 58, 58, 0.3) 25%,       /* Abu-abu sedikit */ -->
+					<!-- rgba(184, 134, 11, 0.5) 60%,     /* Emas lebih tegas */ -->
+					<!-- rgba(255, 215, 0, 0.6) 100%        /* Emas murni (gold) solid di ujung */ -->
+				  <!-- ); -->
+				  <!-- box-shadow: 0 6px 14px rgba(255, 215, 0, 0.3); /* Bayangan emas lebih terang */ -->
+				  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
+				<!-- }	 -->
+
+				.navbar {
 				  background: linear-gradient(
 					135deg,
-					rgba(10, 10, 10, 0.3) 5%,        /* Hitam sangat sedikit dan lebih transparan */
-					rgba(58, 58, 58, 0.3) 25%,       /* Abu-abu sedikit */
-					rgba(184, 134, 11, 0.5) 60%,     /* Emas lebih tegas */
-					rgba(255, 215, 0, 0.6) 100%        /* Emas murni (gold) solid di ujung */
+					rgba(10, 10, 10, 0.15) 5%,       /* Hitam lebih transparan */
+					rgba(58, 58, 58, 0.15) 25%,      /* Abu-abu lebih tipis */
+					rgba(184, 134, 11, 0.3) 60%,     /* Emas lembut */
+					rgba(255, 215, 0, 0.4) 100%      /* Gold transparan */
 				  );
-				  box-shadow: 0 6px 14px rgba(255, 215, 0, 0.3); /* Bayangan emas lebih terang */
-				  backdrop-filter: blur(3px); /* Efek kaca buram */
-				}	
+				  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5); /* Bayangan emas lebih besar dan mewah */
+				  backdrop-filter: blur(4px); /* Efek kaca buram sedikit lebih kuat */
+				}
 
                   .navbar-brand {
                     font-family: 'Montserrat', sans-serif;
@@ -466,20 +478,20 @@
                   }
 
                   .nav-link::after {
-                    content: '';
-                    display: block;
-                    width: 0;
-                    height: 2px;
-                    background: #ffc107;
-                    transition: width 0.3s ease;
-                    position: absolute;
-                    bottom: -6px;
-                    left: 0;
-                  }
+  content: '';
+  display: block;
+  width: 100%;              /* garis selalu penuh sepanjang teks */
+  height: 2px;
+  background: white;        /* warna putih sebelum hover */
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  transition: background 0.3s ease, width 0.3s ease;
+}
 
-                  .nav-link:hover::after {
-                    width: 100%;
-                  }
+.nav-link:hover::after {
+  background: #ffc107;      /* berubah jadi kuning saat hover */
+}
 
                   .hero {
 					margin-top: 0;
@@ -884,7 +896,7 @@
 
     <!-- Background Image -->
     <img src="lwhead.webp" alt="Decor"
-     style="position: absolute; top: 0; left: 0; width: 100%; height: 60vh; 
+     style="position: absolute; top: 0; left: 0; width: 100%; height: 80vh; 
             object-fit: cover; z-index: -1;" />
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent">
@@ -928,16 +940,27 @@
         <a href="#tentang" class="btn btn-primary mt-3">Our Profile</a>
     </div>
 
-    <div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;">
-        <div style="display: flex; align-items: center; margin-right: 20px;">
-            <img src="logo STARLET slv.png" alt="Starlet Animation" style="height: 80px; width: auto; position: relative; z-index: 1;" />
-        </div>
-        <div>
-            <h2 style="font-size: 18px; color: #FFFFFF; text-shadow: 1px 1px 2px #888, 0 0 10px #FFF; margin: 0;">
-                Best quality polyester fabric,<br>Starlet is the answer
-            </h2>
-        </div>
-    </div>
+    <!-- <div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;"> -->
+        <!-- <div style="display: flex; align-items: center; margin-right: 20px;"> -->
+            <!-- <img src="logo STARLET slv.png" alt="Starlet Animation" style="height: 80px; width: auto; position: relative; z-index: 1;" /> -->
+        <!-- </div> -->
+        <!-- <div> -->
+            <!-- <h2 style="font-size: 18px; color: #FFFFFF; text-shadow: 1px 1px 2px #888, 0 0 10px #FFF; margin: 0;"> -->
+                <!-- Best quality polyester fabric,<br>Starlet is the answer -->
+            <!-- </h2> -->
+        <!-- </div> -->
+    <!-- </div> -->
+	
+	<div class="hero animate-on-scroll" 
+     style="display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: transparent; 
+            padding: 0; 
+            height: 1px; 
+            position: relative; 
+            top: 20px;">
+	</div>
 
 </section>
         <!-- Tentang Kami -->
@@ -1091,7 +1114,7 @@
                     </div>
                 </div>
             </div>
-			</div>			
+			</div>
 			<!-- <button onclick="printSection()">Print Certificates</button> -->
         </section>
 		
