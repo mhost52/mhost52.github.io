@@ -458,40 +458,58 @@
                   }
 
                   .nav-link {
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    position: relative;
-                    display: inline-block;
-                    color: white;
-                    background: linear-gradient(to right, white 50%, #ffc107 50%);
-                    background-size: 200% 100%;
-                    background-position: left center;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    transition: background-position 0.4s ease;
-                  }
+					  margin: 0 12px;
+					  font-size: 1.1rem;
+					  font-weight: 600;
+					  text-transform: uppercase;
+					  letter-spacing: 0.5px;
+					  position: relative;
+					  display: inline-block;
 
-                  .nav-link:hover {
-                    background-position: right center;
-                  }
+					  /* Warna dasar: emas muda */
+					  color: #ffd700;
+					  background: linear-gradient(to right, #ffcc33, #ffd700);
+					  background-size: 200% 100%;
+					  background-position: left center;
+					  -webkit-background-clip: text;
+					  -webkit-text-fill-color: transparent;
 
-                  .nav-link::after {
-  content: '';
-  display: block;
-  width: 100%;              /* garis selalu penuh sepanjang teks */
-  height: 2px;
-  background: white;        /* warna putih sebelum hover */
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  transition: background 0.3s ease, width 0.3s ease;
-}
+					  /* Supaya tetap terbaca meski background mirip */
+					  text-shadow: 0 0 4px rgba(0,0,0,0.5);
 
-.nav-link:hover::after {
-  background: #ffc107;      /* berubah jadi kuning saat hover */
-}
+					  /* Outline tipis untuk memperjelas huruf */
+					  -webkit-text-stroke: 0.5px black;
+
+					  transition: background-position 0.4s ease, 
+								  text-shadow 0.4s ease, 
+								  color 0.4s ease;
+					}
+
+					.nav-link:hover {
+					  background-position: right center;
+					  color: #fff27d; /* emas lebih terang saat hover */
+					  text-shadow: 0 0 12px rgba(255,242,125,0.9), 
+								   0 0 24px rgba(255,242,125,0.6); /* efek glow lebih kuat */
+					}
+
+					.nav-link::after {
+					  content: '';
+					  display: block;
+					  width: 100%;
+					  height: 2px;
+					  background: #ffd700; /* garis emas muda */
+					  position: absolute;
+					  bottom: -3px; /* lebih dekat ke teks */
+					  left: 0;
+					  transition: background 0.3s ease, box-shadow 0.3s ease;
+					}
+
+					.nav-link:hover::after {
+					  background: #fff27d; /* garis emas lebih terang saat hover */
+					  box-shadow: 0 0 10px rgba(255,242,125,0.8); /* glow pada garis */
+					}
+
+
 
                   .hero {
 					margin-top: 0;
