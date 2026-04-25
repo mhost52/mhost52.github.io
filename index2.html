@@ -570,6 +570,7 @@
                   }
 
                  #tentang {
+				 
 				  background: linear-gradient(to right, #c3cfe2, #a1c4fd, #f5f7fa); /* gradasi biru ke putih ke abu terang */
 				  padding: 60px 20px;
 				  border-radius: 10px;
@@ -577,6 +578,23 @@
 				  animation: fadeInUp 1.2s ease forwards;
 				  opacity: 0;
 				}
+				
+				#tentang {
+  margin-top: 150px;  /* default untuk layar besar */
+}
+
+@media (max-width: 768px) {
+  #tentang {
+    margin-top: -80px; /* lebih kecil di tablet/HP */
+  }
+}
+
+@media (max-width: 480px) {
+  #tentang {
+    margin-top: -80px; /* lebih rapat di HP kecil */
+  }
+}
+
 
                   .section-title {
                     font-size: 2.5rem;
@@ -910,79 +928,80 @@
 	
         <!-- Navbar -->
         <!-- Navbar -->
-<section id="home">
+		<section id="home">
 
-    <!-- Background Image -->
-    <img src="lwhead.webp" alt="Decor"
-     style="position: absolute; top: 0; left: 0; width: 100%; height: 80vh; 
-            object-fit: cover; z-index: -1;" />
+			<!-- Background Image -->
+			<img src="lwhead.webp" alt="Decor"
+			 style="position: absolute; top: 0; left: 0; width: 100%; height: 80vh; 
+					object-fit: cover; z-index: -1;" />
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="LeuwitexLogo.png" alt="PT Leuwijaya Logo" style="height: 30px; object-fit: contain;" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#tentang">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#value">Our Value</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="event.preventDefault()">Products</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="product.html">All</a></li>
-                            <li><a class="dropdown-item" href="productcatmensuiting.html">Men Suiting</a></li>
-                            <li><a class="dropdown-item" href="productcatladieswoven.html">Ladies Woven</a></li>
-                            <li><a class="dropdown-item" href="productcatknitting.html#produk3">Knitting</a></li>
-                            <li><a class="dropdown-item" href="productcatthobe.html#produk3">Thobe</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#market">Market</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#kontak">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+			<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent">
+				<div class="container">
+					<a class="navbar-brand" href="#">
+						<img src="LeuwitexLogo.png" alt="PT Leuwijaya Logo" style="height: 30px; object-fit: contain;" />
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+							aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#tentang">About</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#value">Our Value</a></li>
+							<li class="nav-item">
+								<a class="nav-link" href="#" onclick="event.preventDefault()">Products</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="product.html">All</a></li>
+									<li><a class="dropdown-item" href="productcatmensuiting.html">Men Suiting</a></li>
+									<li><a class="dropdown-item" href="productcatladieswoven.html">Ladies Woven</a></li>
+									<li><a class="dropdown-item" href="productcatknitting.html#produk3">Knitting</a></li>
+									<li><a class="dropdown-item" href="productcatthobe.html#produk3">Thobe</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="index.html#market">Market</a></li>
+							<li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#kontak">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 
-    <!-- Hero Section -->
-    <div class="hero animate-on-scroll" style="position: relative; overflow: hidden;">
-        <h1 style="color: #FFD700; text-shadow: 1px 1px 2px #B8860B, 0 0 10px #FFD700, 0 0 20px #FFA500;">
-            PT Leuwijaya Utama Textile
-        </h1>
-        <p>Innovation for the Future</p>
-        <a href="#tentang" class="btn btn-primary mt-3">Our Profile</a>
-    </div>
+			<!-- Hero Section -->
+			<div class="hero animate-on-scroll" style="position: relative; overflow: hidden;">
+				<h1 style="color: #FFD700; text-shadow: 1px 1px 2px #B8860B, 0 0 10px #FFD700, 0 0 20px #FFA500;">
+					PT Leuwijaya Utama Textile
+				</h1>
+				<p>Innovation for the Future</p>
+				<a href="#tentang" class="btn btn-primary mt-3">Our Profile</a>
+			</div>
 
-    <!-- <div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;"> -->
-        <!-- <div style="display: flex; align-items: center; margin-right: 20px;"> -->
-            <!-- <img src="logo STARLET slv.png" alt="Starlet Animation" style="height: 80px; width: auto; position: relative; z-index: 1;" /> -->
-        <!-- </div> -->
-        <!-- <div> -->
-            <!-- <h2 style="font-size: 18px; color: #FFFFFF; text-shadow: 1px 1px 2px #888, 0 0 10px #FFF; margin: 0;"> -->
-                <!-- Best quality polyester fabric,<br>Starlet is the answer -->
-            <!-- </h2> -->
-        <!-- </div> -->
-    <!-- </div> -->
-	
-	<div class="hero animate-on-scroll" 
-     style="display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: transparent; 
-            padding: 0; 
-            height: 1px; 
-            position: relative; 
-            top: 20px;">
-	</div>
+			<!-- <div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;"> -->
+				<!-- <div style="display: flex; align-items: center; margin-right: 20px;"> -->
+					<!-- <img src="logo STARLET slv.png" alt="Starlet Animation" style="height: 80px; width: auto; position: relative; z-index: 1;" /> -->
+				<!-- </div> -->
+				<!-- <div> -->
+					<!-- <h2 style="font-size: 18px; color: #FFFFFF; text-shadow: 1px 1px 2px #888, 0 0 10px #FFF; margin: 0;"> -->
+						<!-- Best quality polyester fabric,<br>Starlet is the answer -->
+					<!-- </h2> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			
+			<div class="hero animate-on-scroll" 
+			 style="display: flex; 
+					align-items: center; 
+					justify-content: center; 
+					background-color: transparent; 
+					padding: 0; 
+					height: 1px; 
+					position: relative; 
+					top: 20px;">
+			</div>
 
-</section>
+		</section>
+
         <!-- Tentang Kami -->
-        <section id="tentang" class="container py-5 animate-on-scroll" style="position: relative; overflow: hidden; min-height: 400px; padding-top: 80px; padding-bottom: 80px;">
+        <section id="tentang" class="container-fluid py-5 animate-on-scroll" style="position: relative; overflow: hidden; min-height: 400px; padding-top: 80px; padding-bottom: 80px;">
 			<!-- Background image via CSS -->
 			<div class="background-image"></div>
 			<!-- Konten teks di atas background -->
@@ -1000,7 +1019,7 @@
 			</div>
 		</section>
 
-        <section id="aboutdetail" class="container py-5" style="margin-top: -80px; position: relative; z-index: 2;">
+        <section id="aboutdetail" class="container-fluid py-5" style="margin-top: -80px; position: relative; z-index: 2;">
             <div class="fabric-group">
                 <div class="fabric-card animate-left">
                     <h3>KNITTED FABRICS</h3>
@@ -1115,7 +1134,7 @@
 		  <!-- </div> -->
 		<!-- </section> -->
         <!-- Certificate -->
-        <section id="certificate" class="container py-5 animate-on-scroll" style="background: linear-gradient(to right, #f8f9fc, #e3e6ea, #d1d9e6); border-radius: 16px;">
+        <section id="certificate" class="container-fluid py-5 animate-on-scroll" style="background: linear-gradient(to right, #f8f9fc, #e3e6ea, #d1d9e6); border-radius: 16px;">
 			<div id="sectionToPrint">
 			<div class="container">
                 <h2 class="section-title">Certificate</h2>
@@ -1138,7 +1157,7 @@
 		
 		
         <!-- Our Value -->
-        <section id="value" class="container py-5 animate-on-scroll">
+        <section id="value" class="container-fluid py-5 animate-on-scroll">
             <h2 class="section-title">Our Value</h2>
             <div class="row justify-content-center mb-5">
                 <div class="col-md-8 text-center">
@@ -1157,7 +1176,7 @@
         </section>
         <!-- market -->
 
-        <section id="market" class="container py-5 position-relative" style="background-image: url('petadunia.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; border-radius: 8px;">
+        <section id="market" class="container-fluid py-5 position-relative" style="background-image: url('petadunia.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; border-radius: 8px;">
             <!-- Overlay -->
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1; border-radius: 8px;"></div>
             <!-- Content -->
@@ -1172,7 +1191,7 @@
         </section>
 
         <!-- Kontak -->
-        <section id="kontak" class="container py-5 animate-on-scroll">
+        <section id="kontak" class="container-fluid py-5 animate-on-scroll">
 			<h2 class="section-title">Our Contact</h2>
 			<ul class="list-unstyled mx-auto" style="max-width: 600px;">
 				<li><strong>Email:</strong> 
@@ -1255,7 +1274,7 @@
 			<!-- </div> -->
 				
 		
-		<section id="lokasi" class="container py-5 animate-on-scroll">
+		<section id="lokasi" class="container-fluid py-5 animate-on-scroll">
 			<h2 class="section-title">Our Location</h2>
 			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div> -->
 			<div class="text-center">
@@ -1276,7 +1295,7 @@
 		<!-- </section> -->
 		
 		<!-- Leaflet Map Section -->
-		<section id="lokasi2" class="container py-5 animate-on-scroll">
+		<section id="lokasi2" class="container-fluid py-5 animate-on-scroll">
 			<!-- <h2 class="section-title">Our Location</h2> -->
 			<!-- <div id="map" style="height: 450px; border-radius: 8px;"></div>-->			
 			  <!-- <h2 class="section-title">Our Location</h2> -->
