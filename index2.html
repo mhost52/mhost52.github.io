@@ -458,57 +458,46 @@
                   }
 
                   .nav-link {
-					  margin: 0 12px;
-					  font-size: 1.1rem;
-					  font-weight: 600;
-					  text-transform: uppercase;
-					  letter-spacing: 0.5px;
-					  position: relative;
-					  display: inline-block;
+  margin: 0 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
 
-					  /* Warna dasar: emas muda */
-					  color: #ffd700;
-					  background: linear-gradient(to right, #ffcc33, #ffd700);
-					  background-size: 200% 100%;
-					  background-position: left center;
-					  -webkit-background-clip: text;
-					  -webkit-text-fill-color: transparent;
+  /* Warna dasar: putih dengan outline hitam */
+  color: #ffffff;
+  -webkit-text-stroke: 0.5px black;   /* border hitam */
+  text-shadow: 0 0 4px rgba(0,0,0,0.5);
 
-					  /* Supaya tetap terbaca meski background mirip */
-					  text-shadow: 0 0 4px rgba(0,0,0,0.5);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
 
-					  /* Outline tipis untuk memperjelas huruf */
-					  -webkit-text-stroke: 0.5px black;
+.nav-link:hover {
+  /* Saat hover jadi emas */
+  color: #ffd700;                     /* teks emas */
+  -webkit-text-stroke: 0.5px black;   /* outline tetap hitam */
+  text-shadow: 0 0 12px rgba(255,215,0,0.9),
+               0 0 24px rgba(255,215,0,0.6); /* efek glow emas */
+}
 
-					  transition: background-position 0.4s ease, 
-								  text-shadow 0.4s ease, 
-								  color 0.4s ease;
-					}
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff; /* garis putih awal */
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
 
-					.nav-link:hover {
-					  background-position: right center;
-					  color: #fff27d; /* emas lebih terang saat hover */
-					  text-shadow: 0 0 12px rgba(255,242,125,0.9), 
-								   0 0 24px rgba(255,242,125,0.6); /* efek glow lebih kuat */
-					}
-
-					.nav-link::after {
-					  content: '';
-					  display: block;
-					  width: 100%;
-					  height: 2px;
-					  background: #ffd700; /* garis emas muda */
-					  position: absolute;
-					  bottom: -3px; /* lebih dekat ke teks */
-					  left: 0;
-					  transition: background 0.3s ease, box-shadow 0.3s ease;
-					}
-
-					.nav-link:hover::after {
-					  background: #fff27d; /* garis emas lebih terang saat hover */
-					  box-shadow: 0 0 10px rgba(255,242,125,0.8); /* glow pada garis */
-					}
-
+.nav-link:hover::after {
+  background: #ffd700; /* garis emas saat hover */
+  box-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
 
 
                   .hero {
@@ -516,7 +505,7 @@
                     background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
                     color: white;
                     padding: 120px 30px;
-                    text-align: center;
+                    text-align: left;
                   }
 
                   .hero h1 {
@@ -534,8 +523,7 @@
 				    height: 400px;
 				    object-fit: contain;
 				    background: #c5bba4; 
-				  }
-				  				  
+				  }				  				  
 
                   footer {
                     background-color: #212529;
@@ -578,23 +566,22 @@
 				  animation: fadeInUp 1.2s ease forwards;
 				  opacity: 0;
 				}
-				
+						
 				#tentang {
-  margin-top: 150px;  /* default untuk layar besar */
-}
+				  margin-top: 10px;  /* default untuk layar besar */
+				}
 
-@media (max-width: 768px) {
-  #tentang {
-    margin-top: -80px; /* lebih kecil di tablet/HP */
-  }
-}
+				@media (max-width: 768px) {
+				  #tentang {
+					margin-top: -80px; /* lebih kecil di tablet/HP */
+				  }
+				}
 
-@media (max-width: 480px) {
-  #tentang {
-    margin-top: -80px; /* lebih rapat di HP kecil */
-  }
-}
-
+				@media (max-width: 480px) {
+				  #tentang {
+					margin-top: -80px; /* lebih rapat di HP kecil */
+				  }
+				}
 
                   .section-title {
                     font-size: 2.5rem;
@@ -871,8 +858,7 @@
 
 			.navbar-transparent {
 			  background-color: transparent;
-			}
-			
+			}			
 			
 			#lokasi2 {
 			  visibility: hidden;
@@ -880,11 +866,11 @@
 			  overflow: hidden;
 			  transition: height 0.5s ease, visibility 0.5s ease;
 			}
+			
 			#lokasi2.show {
 			  visibility: visible;
 			  height: 450px;
-			}
-			
+			}			
 			
 			.nav-item {
 			  position: relative; /* supaya dropdown bisa ditempatkan relatif ke menu induk */
@@ -920,6 +906,40 @@
 			  display: block;
 			}
 			
+			
+			.hero p {
+  font-family: Arial;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(
+    to bottom,
+    #fff8dc 0%,   /* ivory */
+    #ffd700 40%,  /* emas terang */
+    #b8860b 100%  /* coklat keemasan */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.3px #000000;
+  position: relative; /* penting untuk pseudo-element */
+  display: inline-block; /* supaya lebar mengikuti teks */
+}
+
+.hero p::after {
+  content: "";
+  display: block;
+  width: 100%; /* mengikuti lebar teks */
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    #fff8dc,
+    #ffd700,
+    #b8860b
+  );
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
 
 
     </style>
@@ -970,10 +990,12 @@
 			<!-- Hero Section -->
 			<div class="hero animate-on-scroll" style="position: relative; overflow: hidden;">
 				<h1 style="color: #FFD700; text-shadow: 1px 1px 2px #B8860B, 0 0 10px #FFD700, 0 0 20px #FFA500;">
-					PT Leuwijaya Utama Textile
+					<!--PT Leuwijaya Utama Textile-->
+					<img src="starlet_anim.gif" alt="PT Leuwijaya Logo" style="height: 100px; object-fit: contain;" />
 				</h1>
-				<p>Innovation for the Future</p>
-				<a href="#tentang" class="btn btn-primary mt-3">Our Profile</a>
+				<p>Premium Fabric Solutions</p>
+				<br/>
+				<a href="product.html" class="btn btn-primary mt-3">View Products -></a>
 			</div>
 
 			<!-- <div class="hero animate-on-scroll" style="display: flex; align-items: center; justify-content: center; background-color: #000; padding: 40px 20px; height: auto; position: relative;"> -->
