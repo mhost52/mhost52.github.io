@@ -433,17 +433,25 @@
 				  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
 				<!-- }	 -->
 
-				.navbar {
-				  background: linear-gradient(
-					135deg,
-					rgba(10, 10, 10, 0.15) 5%,       /* Hitam lebih transparan */
-					rgba(58, 58, 58, 0.15) 25%,      /* Abu-abu lebih tipis */
-					rgba(184, 134, 11, 0.3) 60%,     /* Emas lembut */
-					rgba(255, 215, 0, 0.4) 100%      /* Gold transparan */
-				  );
-				  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5); /* Bayangan emas lebih besar dan mewah */
-				  backdrop-filter: blur(4px); /* Efek kaca buram sedikit lebih kuat */
-				}
+					.navbar {
+					  background: linear-gradient(
+						135deg,
+						rgba(10, 10, 10, 0.15) 5%,       
+						rgba(58, 58, 58, 0.15) 25%,      
+						rgba(184, 134, 11, 0.3) 60%,     
+						rgba(255, 215, 0, 0.4) 100%      
+					  );
+					  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5); 
+					  backdrop-filter: blur(8px); 
+					  
+					  border: 2px solid #FFD700;   
+					  border-radius: 50px;         
+					  padding: 8px 20px;           
+
+					  margin-top: 20px; /* geser navbar ke bawah */
+					}
+
+
 
                   .navbar-brand {
                     font-family: 'Montserrat', sans-serif;
@@ -457,47 +465,47 @@
                     color: #ffc107 !important;
                   }
 
-                  .nav-link {
-  margin: 0 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  position: relative;
-  display: inline-block;
+                 .nav-link {
+					  margin: 0 12px;
+					  font-size: 1.1rem;
+					  font-weight: 700;              /* lebih tebal supaya solid */
+					  text-transform: uppercase;
+					  letter-spacing: 0.5px;
+					  position: relative;
+					  display: inline-block;
 
-  /* Warna dasar: putih dengan outline hitam */
-  color: #ffffff;
-  -webkit-text-stroke: 0.5px black;   /* border hitam */
-  text-shadow: 0 0 4px rgba(0,0,0,0.5);
+					  color: #ffffff;                /* putih solid */
+					  -webkit-text-stroke: 0.5px #ffffff; /* outline putih tipis */
+					  text-shadow: none;             /* tanpa bayangan */
+					  
+					  transition: color 0.4s ease;
+					}
 
-  transition: color 0.4s ease, text-shadow 0.4s ease;
-}
 
-.nav-link:hover {
-  /* Saat hover jadi emas */
-  color: #ffd700;                     /* teks emas */
-  -webkit-text-stroke: 0.5px black;   /* outline tetap hitam */
-  text-shadow: 0 0 12px rgba(255,215,0,0.9),
-               0 0 24px rgba(255,215,0,0.6); /* efek glow emas */
-}
+					.nav-link:hover {
+					  /* Saat hover jadi emas */
+					  color: #ffd700;                     /* teks emas */
+					  -webkit-text-stroke: 0.5px black;   /* outline tetap hitam */
+					  text-shadow: 0 0 12px rgba(255,215,0,0.9),
+								   0 0 24px rgba(255,215,0,0.6); /* efek glow emas */
+					}
 
-.nav-link::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: #ffffff; /* garis putih awal */
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
+					.nav-link::after {
+					  content: '';
+					  display: block;
+					  width: 100%;
+					  height: 2px;
+					  background: #ffffff; /* garis putih awal */
+					  position: absolute;
+					  bottom: -3px;
+					  left: 0;
+					  transition: background 0.3s ease, box-shadow 0.3s ease;
+					}
 
-.nav-link:hover::after {
-  background: #ffd700; /* garis emas saat hover */
-  box-shadow: 0 0 10px rgba(255,215,0,0.8);
-}
+					.nav-link:hover::after {
+					  background: #ffd700; /* garis emas saat hover */
+					  box-shadow: 0 0 10px rgba(255,215,0,0.8);
+					}
 
 
                   .hero {
@@ -568,7 +576,7 @@
 				}
 						
 				#tentang {
-				  margin-top: 0px;  /* default untuk layar besar */
+				  margin-top: -20px;  /* default untuk layar besar */
 				}
 
 				@media (max-width: 768px) {
@@ -1001,19 +1009,19 @@
 			  </div>
 			</h1>
 
-				<p style="font-size: 26px; margin-left: 29px;">Premium Fabric Solutions</p>
+				<p style="font-size: 30px; margin-left: 32px;">Premium Fabric Solutions</p>
 				<br/>
 				<a href="product.html" class="btn btn-primary mt-3" 
-   style="
-     margin-left: 29px; 
-     background: linear-gradient(45deg, #FFD700, #DAA520, #B8860B); 
-     color: #000; 
-     font-weight: 600; 
-     border: none; 
-     box-shadow: 0 0 10px rgba(218,165,32,0.7); 
-   ">
-  View Products ➔
-</a>
+				   style="
+					 margin-left: 32px; 
+					 background: linear-gradient(45deg, #FFD700, #DAA520, #B8860B); 
+					 color: #000; 
+					 font-weight: 600; 
+					 border: none; 
+					 box-shadow: 0 0 10px rgba(218,165,32,0.7); 
+				   ">
+				  View Products ➔
+				</a>
 
 
 			</div>
