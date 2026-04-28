@@ -436,20 +436,24 @@
 					.navbar {
 					  background: linear-gradient(
 						135deg,
-						rgba(10, 10, 10, 0.15) 5%,       
-						rgba(58, 58, 58, 0.15) 25%,      
+						rgba(10, 10, 10, 0.35) 5%,       
+						rgba(58, 58, 58, 0.25) 25%,      
 						rgba(184, 134, 11, 0.3) 60%,     
 						rgba(255, 215, 0, 0.4) 100%      
 					  );
 					  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5); 
-					  backdrop-filter: blur(8px); 
-					  
+					  backdrop-filter: blur(12px);
+					  -webkit-backdrop-filter: blur(6px);
+
 					  border: 2px solid #FFD700;   
 					  border-radius: 50px;         
-					  padding: 8px 20px;           
+					  padding: 8px 20px;
 
-					  margin-top: 20px; /* geser navbar ke bawah */
+					  width: 90%;          /* tidak penuh, hanya 80% layar */
+					  max-width: 1500px;   /* batas maksimal */
+					  margin: 20px auto;   /* center horizontal + jarak ke bawah */
 					}
+
 
 
 
