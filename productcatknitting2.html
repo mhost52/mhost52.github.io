@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <title>PT Leuwijaya</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Bootstrap & jQuery CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+		
+        <style>
+					  .zoomable {
+						  width: 300px;
+						  transition: transform 0.3s ease;
+						  cursor: pointer;
+						}
+
+						.zoomed {
+						  transform: scale(2);
+						  z-index: 10;
+						  position: relative;
+						}	
+		
+					  #lokasi2 {
+						<!-- display: none; -->
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+						text-align: center;
+					  }
+
+					  #lokasi2 .section-title {
+						text-align: center;
+					  }
+
+					  #map {
+						margin: 0 auto;
+						width: 100%;
+						max-width: 800px;
+					  }
+
+					  #qrcode {
+						margin-top: 20px;
+					  }
+
+		
+					.card-img-top {
+					  width: 10%;         /* misalnya hanya 80% dari lebar parent */
+					  margin: 0 auto;     /* agar tetap di tengah */
+					  border-radius: 0px; /* opsional, biar lebih lembut */
+					}
+		
+					.single-item-center {
+					  display: flex;
+					  justify-content: center;
+					  width: 100%;
+					  padding: 0 1rem;
+					}
+
+					.single-item-center > .produk-card {
+					  flex: 0 0 50%;
+					  max-width: 50%;
+					}
+
+					/* Responsif di layar kecil */
+					@media (max-width: 768px) {
+					  .single-item-center > .produk-card {
+						flex: 0 0 100%;
+						max-width: 100%;
+					  }
+					}
+		
+					.background-image {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%; /* Menutupi seluruh section */
+						background-image: url('tentangggd.webp');
+						background-size: cover;
+						background-position: center;
+						opacity: 0.2; /* Transparansi agar teks tetap terbaca */
+						z-index: 0;
+						pointer-events: none;
+					}
+
+					.background-image::after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.3); /* lapisan gelap */
+					}
+		
+					#lokasi {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+					
+					#lokasi2 {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+		
+					#map { height: 400px; }
+					#qrcode { margin-top: 20px; }
+		
+					body {
+					  font-family: 'Segoe UI', sans-serif;
+					  color: #3b3b3b;
+					  background: linear-gradient(
+						to right,
+						#f7e7ce 0%,
+						#fbeac2 20%,
+						#fff8e1 40%,
+						#fbeac2 60%,
+						#ecd9b0 80%,
+						#e6cfa3 100%
+					  );
+					  background-size: 300% 100%;
+					  animation: champagneFlow 20s ease-in-out infinite;
+					  padding-top: 70px;
+					  scroll-behavior: smooth;
+					}
+
+					@keyframes champagneFlow {
+					  0% { background-position: 0% 0%; }
+					  50% { background-position: 100% 0%; }
+					  100% { background-position: 0% 0%; }
+					}
+
+					h1, h2 {
+					  color: #b2926a; /* Gold accent */
+					}
+
+					button {
+					  background-color: #f7e7ce;
+					  color: #3b3b3b;
+					  border: 2px solid #b2926a;
+					  padding: 10px 20px;
+					  border-radius: 8px;
+					  cursor: pointer;
+					  transition: all 0.3s ease;
+					}
+
+					button:hover {
+					  background-color: #ecd9b0;
+					  color: #000;
+					}
+					
+					.kategori-tab {
+					  background-color: #f0f0f0; /* Abu-abu muda */
+					  color: #333; /* Warna teks agar tetap jelas */
+					  border-color: #ccc;
+					}
+
+				   .kategori-tab.active {
+					  background-color: #ffc107;
+					  color: #fff;
+					  font-weight: bold;
+					}
+					.img-wrapper img {
+					  width: 100%;
+					  height: auto;
+					  object-fit: cover;
+					  <!-- border-radius: 8px; -->
+					}
+					.text-center2 {
+					  font-size: 1.8rem;
+					  font-weight: 600;
+					}
+
+            	   #produk {
+				    padding-top: 10px;
+                    padding-bottom: 10px;
+				    background: linear-gradient(to bottom right, #cccccc, #d4af37);
+					padding: 3rem 0;        
+					border-radius: 8px;					
+                  }
+				  
+
+                  #produk-list {
+						transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      				}
+
+                  /* Posisi awal sebelum animasi masuk */
+                  #produk-list.muncul {
+                    opacity: 0;
+                    transform: translateX(-150px);
+                  }
+
+                  /* Posisi akhir setelah muncul */
+                  #produk-list.aktif {
+                    opacity: 1;
+                    transform: translateX(0);
+                    transition: transform 0.8s ease, opacity 0.8s ease;
+                  }
+
+                  .styled-text {
+                    color: #007BFF;
+                    /* Biru yang cerah dan menarik */
+                    font-size: 1.1rem;
+                    /* Ukuran teks agak besar */
+                    font-weight: 500;
+                    /* Sedikit tebal untuk daya tarik visual */
+                  }
+
+                  .fabric-group {
+                    display: flex;
+                    gap: 40px;
+                    justify-content: center;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                  }
+
+                  .fabric-card {
+                    flex: 1 1 300px;
+                    max-width: 500px;
+                    background: linear-gradient(to right, #001f18, #013220, #02543a);
+            		color: #ffffff; /* Optional: ubah teks jadi putih agar kontras */
+                    padding: 20px;
+                    border-radius: 8px;
+                    opacity: 0;
+                    transform: translateX(0);
+                    transition: all 1s ease;
+                  }
+
+            	  .fabric-card.woven {
+				    background: linear-gradient(to right, #4b5967, #708090, #a0b0c0); /* Gradasi abu-ungu tua ke terang */
+				  }
+				  
+				  .fabric-card.certificate {
+				    background: linear-gradient(to right,#B8860B,#C9A646,#DAA520,#DAA520);
+				  }
+
+                  .animate-left {
+                    transform: translateX(-100px);
+                  }
+				  
+				  /* State awal: geser ke kiri */
+					.animate-left-big {
+					  opacity: 0;
+					  transform: translateX(-200px) scale(0.8);
+					  transition: all 0.8s ease-out;
+					}
+
+                  .animate-right {
+                    transform: translateX(100px);
+                  }
+
+                  .visible {
+                    transform: translateX(0) !important;
+                    opacity: 1;
+                  }
+
+                  .img-hover-zoom {
+                    transition: transform 0.3s ease;
+                  }
+
+                  .img-hover-zoom:hover {
+                    transform: scale(1.3);
+                  }				  
+
+                  #value {
+                    background: linear-gradient(90deg, #fefcfb, #e8f5e9, #d7ccc8);
+            		scroll-margin-top: 100px; /* ubah sesuai tinggi navbar kamu */
+                    color: white;
+                    border-radius: 8px;
+                    padding: 10px 20px;
+                    transition: all 0.3s ease;
+                  }
+
+                  .animate-on-scroll {
+                    opacity: 0;
+                    transform: scale(0.95) translateY(30px);
+                    transition: all 0.8s ease;
+                  }
+
+                  .animate-on-scroll.active {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                  }
+
+                  #kontak {
+				  background: linear-gradient(to right, #ffecd2, #fcb69f); /* Dari peach muda ke oranye lembut */
+				  border-radius: 12px;
+				  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+				}
+				
+				#career {
+				min-height: 300px;
+				background: linear-gradient(135deg, #f5f5f5, #e0e0e0); /* Soft woven-like gradient */
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				padding: 3rem 2rem;
+				transition: background 0.3s ease;
+				}
+
+				#career:hover {
+					background: linear-gradient(135deg, #eaeaea, #d6d6d6); /* Subtle hover effect */
+				}
+
+				#career .section-title {
+					font-family: 'Segoe UI', sans-serif;
+					font-size: 2rem;
+					font-weight: 600;
+					color: #333;
+					text-align: center;
+					margin-bottom: 1.5rem;
+					position: relative;
+				}
+
+				#career .section-title::after {
+					content: '';
+					display: block;
+					width: 60px;
+					height: 4px;
+					background-color: #c4a35a; /* Golden accent */
+					margin: 0.5rem auto 0;
+					border-radius: 2px;
+				}
+
+				#career ul {
+					font-family: 'Open Sans', sans-serif;
+					font-size: 1rem;
+					color: #555;
+					line-height: 1.8;
+					padding-left: 0;
+				}
+
+				#career ul li {
+					margin-bottom: 1rem;
+				}
+
+				#career a {
+					color: #c4a35a;
+					text-decoration: none;
+					font-weight: 600;
+				}
+
+				#career a:hover {
+					text-decoration: underline;
+				}
+				
+				/* State sebelum terlihat */
+				.animate-on-scroll {
+				  opacity: 0;
+				  transform: translateY(40px);
+				  transition: all 0.6s ease-out;
+				}
+
+				/* State setelah terlihat */
+				.animate-on-scroll.animate {
+				  opacity: 1;
+				  transform: translateY(0);
+				}
+
+
+                 .section-title {
+                    font-size: 2.2rem;
+                    color: #00796b;
+                    margin-bottom: 0px; /* asalnya 100 */
+                  }
+
+                  p.lead {
+                    color: #ffffff;
+                    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                    /* bayangan untuk keterbacaan */
+                    font-size: 1.2rem;
+                  }
+
+                  ul li {
+                    font-size: 1.1rem;
+                    color: #004d40;
+                    margin-bottom: 10px;
+                  }
+
+                  @keyframes growImage {
+                    0% {
+                      transform: scale(0.2);
+                      opacity: 0;
+                    }
+
+                    100% {
+                      transform: scale(1);
+                      opacity: 0.8;
+                    }
+                  }
+
+                  .hero img {
+                    animation: growImage 1.5s ease-out forwards;
+                  }
+
+                  /* Fancy Navbar */
+                  <!-- .navbar { -->
+					  <!-- background: linear-gradient( -->
+						<!-- 135deg, -->
+						<!-- rgba(10, 10, 10, 0.7) 20%, -->
+						<!-- rgba(58, 58, 58, 0.7) 60%, -->
+						<!-- rgba(184, 134, 11, 0.7) 95% -->
+					  <!-- ); -->
+					  <!-- box-shadow: 0 6px 14px rgba(184, 134, 11, 0.25); -->
+					  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
+					<!-- } -->
+					
+				  <!-- .navbar { -->
+					  <!-- background: linear-gradient( -->
+						<!-- 135deg, -->
+						<!-- rgba(10, 10, 10, 0.4) 20%, -->
+						<!-- rgba(58, 58, 58, 0.6) 60%, -->
+						<!-- rgba(184, 134, 11, 0.7) 95% -->
+					  <!-- ); -->
+					  <!-- box-shadow: 0 6px 14px rgba(184, 134, 11, 0.15); -->
+					  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
+					<!-- } -->
+					
+				 <!-- .navbar { -->
+				  <!-- background: linear-gradient( -->
+					<!-- 135deg, -->
+					<!-- rgba(10, 10, 10, 0.3) 5%,        /* Hitam sangat sedikit dan lebih transparan */ -->
+					<!-- rgba(58, 58, 58, 0.3) 25%,       /* Abu-abu sedikit */ -->
+					<!-- rgba(184, 134, 11, 0.5) 60%,     /* Emas lebih tegas */ -->
+					<!-- rgba(255, 215, 0, 0.6) 100%        /* Emas murni (gold) solid di ujung */ -->
+				  <!-- ); -->
+				  <!-- box-shadow: 0 6px 14px rgba(255, 215, 0, 0.3); /* Bayangan emas lebih terang */ -->
+				  <!-- backdrop-filter: blur(3px); /* Efek kaca buram */ -->
+				<!-- }	 -->
+
+					.navbar {
+					  background: linear-gradient(
+						135deg,
+						rgba(10, 10, 10, 0.35) 5%,       
+						rgba(58, 58, 58, 0.25) 25%,      
+						rgba(184, 134, 11, 0.3) 60%,     
+						rgba(255, 215, 0, 0.4) 100%      
+					  );
+					  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5); 
+					  backdrop-filter: blur(90px);
+					  -webkit-backdrop-filter: blur(6px);
+
+					  border: 2px solid #FFD700;   
+					  border-radius: 50px;         
+					  padding: 8px 20px;
+
+					  width: 90%;          /* tidak penuh, hanya 80% layar */
+					  max-width: 1500px;   /* batas maksimal */
+					  margin: 20px auto;   /* center horizontal + jarak ke bawah */
+					}
+
+
+                  .navbar-brand {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  }
+
+                  .navbar-brand:hover {
+                    color: #ffc107 !important;
+                  }
+
+                 .nav-link {
+					  margin: 0 12px;
+					  font-size: 1.1rem;
+					  font-weight: 700;              /* lebih tebal supaya solid */
+					  text-transform: uppercase;
+					  letter-spacing: 0.5px;
+					  position: relative;
+					  display: inline-block;
+
+					  color: #FFD700;   /* emas terang */
+              
+					  /* putih solid */
+					  -webkit-text-stroke: 0.5px #ffffff; /* outline putih tipis */
+					  text-shadow: none;             /* tanpa bayangan */
+					  
+					  transition: color 0.4s ease;
+					}
+
+
+					.nav-link:hover {
+					  /* Saat hover jadi emas */
+					  color: #ffd700;                     /* teks emas */
+					  -webkit-text-stroke: 0.5px black;   /* outline tetap hitam */
+					  text-shadow: 0 0 12px rgba(255,215,0,0.9),
+								   0 0 24px rgba(255,215,0,0.6); /* efek glow emas */
+					}
+
+					.nav-link::after {
+					  content: '';
+					  display: block;
+					  width: 100%;
+					  height: 2px;
+					  background: #ffffff; /* garis putih awal */
+					  position: absolute;
+					  bottom: -3px;
+					  left: 0;
+					  transition: background 0.3s ease, box-shadow 0.3s ease;
+					}
+
+					.nav-link:hover::after {
+					  background: #ffd700; /* garis emas saat hover */
+					  box-shadow: 0 0 10px rgba(255,215,0,0.8);
+					}
+
+
+                  .hero {
+					margin-top: 0;
+                    background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
+                    color: white;
+                    padding: 120px 30px;
+                    text-align: left;
+                  }
+
+                  .hero h1 {
+                    font-size: 3rem;
+                    font-weight: bold;
+                  }
+
+                  .section-title {
+                    margin: 60px 0 30px;
+                    text-align: center;
+                  }
+
+                  .card img {
+				    width: 100%;
+				    height: 400px;
+				    object-fit: contain;
+				    background: #c5bba4; 
+				  }				  				  
+
+                  footer {
+                    background-color: #212529;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                  }
+
+                  #backToTop {
+                    display: none;
+                    position: fixed;
+                    bottom: 20px;
+                    right: 30px;
+                    z-index: 99;
+                    font-size: 18px;
+                    border: none;
+                    outline: none;
+                    background-color: #343a40;
+                    color: white;
+                    cursor: pointer;
+                    padding: 10px 14px;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+                    transform: scale(1);
+                  }
+
+                  #backToTop:hover {
+                    background-color: #ffc107;
+                    color: #212529;
+                    transform: scale(1.1);
+                  }
+
+                 #tentang {
+				 
+				  background: linear-gradient(to right, #c3cfe2, #a1c4fd, #f5f7fa); /* gradasi biru ke putih ke abu terang */
+				  padding: 60px 20px;
+				  border-radius: 10px;
+				  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+				  animation: fadeInUp 1.2s ease forwards;
+				  opacity: 0;
+				}
+						
+				#tentang {
+				  margin-top: -20px;  /* default untuk layar besar */
+				}
+
+				@media (max-width: 768px) {
+				  #tentang {
+					margin-top: -80px; /* lebih kecil di tablet/HP */
+				  }
+				}
+
+				@media (max-width: 480px) {
+				  #tentang {
+					margin-top: -80px; /* lebih rapat di HP kecil */
+				  }
+				}
+
+                  .section-title {
+                    font-size: 2.5rem;
+                    color: #2c3e50;
+                    margin-bottom: 20px;
+                    animation: slideInDown 1s ease forwards;
+                    opacity: 0;
+                  }
+
+                  .text-center {
+                    font-size: 1.1rem;
+                    color: #34495e;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    animation: fadeIn 2s ease forwards;
+                    opacity: 0;
+                  }
+
+                  .text-center2 {
+                    font-size: 1.8rem;
+                    color: #007BFF;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    animation: fadeIn 2s ease forwards;
+                    opacity: 0;
+                  }
+
+                  @keyframes fadeInUp {
+                    from {
+                      transform: translateY(30px);
+                      opacity: 0;
+                    }
+
+                    to {
+                      transform: translateY(0);
+                      opacity: 1;
+                    }
+                  }
+
+                  @keyframes slideInDown {
+                    from {
+                      transform: translateY(-50px);
+                      opacity: 0;
+                    }
+
+                    to {
+                      transform: translateY(0);
+                      opacity: 1;
+                    }
+                  }
+
+                  @keyframes fadeIn {
+                    from {
+                      opacity: 0;
+                    }
+
+                    to {
+                      opacity: 1;
+                    }
+                  }
+
+                  .animate-on-scroll {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: all 1.2s ease;
+                  }
+
+                  .animate-on-scroll.active {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+
+                  @media (max-width: 768px) {
+                    #tentang {
+                      flex-direction: column !important;
+                      text-align: center;
+                    }
+                  }
+
+            	  .textile-section {
+            	  display: flex;
+            	  flex-direction: column;
+            	  gap: 30px;
+            	  padding: 20px;
+            	  align-items: center; /* Menjadikan semua card berada di tengah */
+            	}
+
+            	.section-card {
+            	  padding: 50px;
+            	  border-radius: 8px;
+            	  color: white;
+            	  max-width: 1150px; /* Ubah sesuai kebutuhan (misal 600px atau 700px) */
+            	  width: 100%;
+            	  box-sizing: border-box;
+            	  opacity: 0;
+            	  transform: translateY(50px);
+            	  transition: opacity 0.8s ease, transform 0.8s ease;
+            	}
+				
+				#resources {
+                    background: linear-gradient(135deg, #dcdcdc, #d4af37);
+            		scroll-margin-top: 100px; /* ubah sesuai tinggi navbar kamu */
+                    color: #2a2a2a;
+                    border-radius: 8px;
+                    padding: 10px 20px;
+                    transition: all 0.3s ease;
+                  }
+								
+				#career {
+                    background: linear-gradient(135deg, #d4af37, #b4c4d9, #dcdcdc);
+            		scroll-margin-top: 100px; /* ubah sesuai tinggi navbar kamu */
+                    color: #2a2a2a;
+                    border-radius: 8px;
+                    padding: 10px 20px;
+                    transition: all 0.3s ease;
+                  }
+
+				#production {
+                    background: linear-gradient(135deg, #dcdcdc, #d4af37, #3a3a3a);
+            		scroll-margin-top: 100px; /* ubah sesuai tinggi navbar kamu */
+                    color: #2a2a2a;
+                    border-radius: 8px;
+                    padding: 10px 20px;
+                    transition: all 0.3s ease;
+                  }
+
+            	.section-card.visible {
+            	  opacity: 1;
+            	  transform: translateY(0);
+            	}
+				
+			.img-wrapper {			  
+			  padding: 2px 2px; /* beri ruang agar latar tampak */
+			  border-radius: 0px; /* opsional, agar lembut di tepi */
+			  display: inline-block;
+			  border-radius: 4px; 
+			}	
+
+			.title-highlight {
+			  background: linear-gradient(135deg, #6d4c28, #b8925c); /* gradasi emas tua */
+			  color: white; /* teks tetap terlihat */
+			  padding: 6px 10px;
+			  border-radius: 6px;
+			  display: inline-block;
+			  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* nuansa kedalaman */
+			  font-weight: bold;
+			}
+
+			.content-bg {
+			  background: linear-gradient(145deg, #b6aa91, #c4b8a2); /* nuansa abu-emas lembut */
+			  padding: 16px;
+			  border-radius: 0 0 0px 0px;
+			  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+			}
+			
+			#prevBtn {
+			  background-color: #d4af37;
+			  color: #333333;
+			  border: none;
+			  position: absolute;
+			  left: 0;
+			  top: 50%;
+			  transform: translateY(-50%);
+			  z-index: 1;
+			  transition: background-color 0.3s ease, color 0.3s ease;
+			}
+
+			#prevBtn:hover {
+			  background-color: #bfa135; /* Emas sedikit lebih gelap */
+			  color: #ffffff;            /* Teks putih agar lebih kontras */
+			}
+
+			#nextBtn {
+			  background-color: #d4af37;
+			  color: #333333;
+			  border: 1px solid #a89f91;
+			  position: absolute;
+			  right: 0;
+			  top: 50%;
+			  transform: translateY(-50%);
+			  z-index: 1;
+			  transition: background-color 0.3s ease, color 0.3s ease;
+			}
+
+			#nextBtn:hover {
+			  background-color: #bfa135;
+			  color: #ffffff;
+			}
+
+			@keyframes slideInLeft {
+			  from {
+				transform: translateX(-100px);
+				opacity: 0;
+			  }
+			  to {
+				transform: translateX(0);
+				opacity: 1;
+			  }
+			}			
+			
+			.map-responsive {
+				overflow: hidden;
+				padding-bottom: 56.25%;
+				position: relative;
+				height: 0;
+			}
+
+			.map-responsive iframe {
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				border-radius: 8px;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+			}
+			
+			#lokasi {
+			  background: linear-gradient(135deg, #dfe9f3, #bcd4e6); /* Biru langit lembut */
+			  border-radius: 12px;
+			  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			  padding: 3rem 2rem;
+			  transition: background 0.3s ease;
+			}
+
+			#lokasi:hover {
+			  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
+			}
+			
+			#lokasi2 {
+			  background: linear-gradient(135deg, #dfe9f3, #bcd4e6); /* Biru langit lembut */
+			  border-radius: 12px;
+			  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			  padding: 3rem 2rem;
+			  transition: background 0.3s ease;
+			}
+
+			#lokasi2:hover {
+			  background: linear-gradient(135deg, #c5dcec, #a7c6dc); /* Efek hover yang halus */
+			}
+
+			.translate-wrapper {
+			  text-align: right;
+			  margin-top: 20px;
+			  font-family: 'Segoe UI', sans-serif;
+			}
+
+			.goog-te-combo {
+			  padding: 8px 12px;
+			  border-radius: 6px;
+			  border: 1px solid #ccc;
+			  background-color: #f9f9f9;
+			  font-size: 1rem;
+			  color: #333;
+			  transition: all 0.3s ease;
+			}
+
+			.goog-te-combo:hover {
+			  background-color: #e0e0e0;
+			  cursor: pointer;
+			}
+
+			.translate-wrapper {
+			  position: relative;
+			  z-index: 999;
+			  padding: 10px;
+			  text-align: right;
+			  background-color: transparent;
+			}
+			
+			.navbar-solid {
+			  background-color: #212529;
+			}
+
+			.navbar-transparent {
+			  background-color: transparent;
+			}			
+			
+			#lokasi2 {
+			  visibility: hidden;
+			  height: 0;
+			  overflow: hidden;
+			  transition: height 0.5s ease, visibility 0.5s ease;
+			}
+			
+			#lokasi2.show {
+			  visibility: visible;
+			  height: 450px;
+			}			
+			
+			.nav-item {
+			  position: relative; /* supaya dropdown bisa ditempatkan relatif ke menu induk */
+			}
+
+			.dropdown-menu {
+			  display: none;
+			  position: absolute;
+			  top: 100%;   /* muncul tepat di bawah menu Products */
+			  left: 0;
+			  background-color: #fff;
+			  min-width: 160px;
+			  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+			  list-style: none;
+			  padding: 0;
+			  margin: 0;
+			  z-index: 1000;
+			}
+
+			.dropdown-item {
+			  padding: 10px;
+			  display: block;
+			  color: #333;
+			  text-decoration: none;
+			}
+
+			.dropdown-item:hover {
+			  background-color: #f1f1f1;
+			}
+
+			/* efek hover untuk menampilkan dropdown */
+			.nav-item:hover .dropdown-menu {
+			  display: block;
+			}
+			
+			
+			.hero p {
+			font-family: Arial;
+			  font-size: 2.5rem;
+			  font-weight: 700;
+			  background: linear-gradient(
+				to bottom,
+				#fff8dc 0%,   /* ivory */
+				#ffd700 40%,  /* emas terang */
+				#b8860b 100%  /* coklat keemasan */
+			  );
+			  -webkit-background-clip: text;
+			  -webkit-text-fill-color: transparent;
+			  -webkit-text-stroke: 0.3px #000000;
+			  position: relative; /* penting untuk pseudo-element */
+			  display: inline-block; /* supaya lebar mengikuti teks */
+			}
+
+			.hero p::after {
+			  content: "";
+			  display: block;
+			  width: 100%; /* mengikuti lebar teks */
+			  height: 3px;
+			  background: linear-gradient(
+				to right,
+				#fff8dc,
+				#ffd700,
+				#b8860b
+			  );
+			  position: absolute;
+			  bottom: -5px;
+			  left: 0;
+			}					
+
+
+
+    </style>
+    </head>
+    <body>
+	
+        <!-- Navbar -->
+        <section id="home">
+		
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-solid">
+			
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="LeuwitexLogo.png" alt="PT Leuwijaya Logo" style="height: 30px; object-fit: contain;" />
+                    </a>
+					
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index2.html#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index2.html#tentang">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index2.html#value">Our Value</a>
+                            </li>
+
+                            <!-- <li class="nav-item"> -->
+                                <!-- <a class="nav-link" href="#resources">Resources</a> -->
+                            <!-- </li> -->
+                            <!-- <li class="nav-item"> -->
+                                <!-- <a class="nav-link" href="#career">R&D</a> -->
+                            <!-- </li> -->
+                            <!-- <li class="nav-item"> -->
+                                <!-- <a class="nav-link" href="#production">Production</a> -->
+                            <!-- </li> -->
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="product2.html">Products</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="product2.html">All</a></li>
+									<li><a class="dropdown-item" href="productcatmensuiting2.html">Men Suiting</a></li>
+									<li><a class="dropdown-item" href="productcatladieswoven2.html">Ladies Woven</a></li>
+									<li><a class="dropdown-item" href="productcatknitting2.html#produk3">Knitting</a></li>
+									<li><a class="dropdown-item" href="productcatthobe2.html#produk3">Thobe</a></li>
+								</ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index2.html#market">Market</a>
+                            </li>
+							<li class="nav-item">
+                                <a class="nav-link" href="career2.html">Career</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index2.html#kontak">Contact Us</a>
+                            </li>
+														
+							<!-- <li class="nav-item"> -->
+                            <!-- &nbsp;&nbsp;&nbsp;<div id="google_translate_element" class="translate-wrapper"></div> -->
+                            <!-- </li> -->
+                        </ul>
+                    </div>
+                </div>
+				<!-- <div class="ml-auto d-flex align-items-center"> -->
+					<!-- <div id="google_translate_element" class="translate-wrapper"></div> -->
+				<!-- </div> -->
+            </nav>
+            						
+        </section>
+        
+        
+       <section id="produk" class="container py-5">
+		  <div class="container">
+			<div id="sectionToPrintProduct">
+			<!-- <h2 class="section-title">Our Products</h2> -->
+
+			<!-- Tabs Kategori -->
+			<!-- <div class="text-center mb-4"> -->
+			  <!-- <div id="kategori-tabs" class="btn-group" role="group"> -->
+			    <!-- <button class="btn btn-outline-primary kategori-tab active" data-kategori="ALL">All</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Men Suiting">Men Suiting</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Ladies Woven">Ladies Woven</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Knitting">Knitting</button> -->
+				<!-- <button class="btn btn-outline-primary kategori-tab" data-kategori="Thobe">Thobe</button>				 -->
+			  <!-- </div> -->
+			<!-- </div> -->
+
+			<!-- Wrapper Produk -->
+			<div class="produk-wrapper position-relative d-flex justify-content-center align-items-center">
+			  <!-- Tombol kiri -->
+			  <!-- <button id="prevBtn" class="btn btn-warning position-absolute" style="left: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&lt;</b></button> -->
+
+			  <!-- Galeri Produk -->
+			  <div id="produk-list" class="row justify-content-center w-100"></div>
+
+			  <!-- Tombol kanan -->
+			  <!-- <button id="nextBtn" class="btn btn-warning position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); z-index: 1;"><b>&gt;</b></button> -->
+			</div>
+			</div>
+		  </div>
+		  <!-- <button onclick="printSection2()">Print Products</button> -->
+		</section>
+        
+		<!-- Leaflet CSS & JS -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		
+		<script>
+		  let map;
+
+			document.getElementById('showMapBtn').addEventListener('click', function () {
+			  const lokasiSection = document.getElementById('lokasi2');
+			  lokasiSection.classList.remove('d-none');
+
+			  // Tunggu layout selesai render
+			  setTimeout(() => {
+				// Inisialisasi map setelah kontainer terlihat
+				map = new google.maps.Map(document.getElementById("map"), {
+				  center: { lat: -6.914744, lng: 107.609810 }, // Contoh: Bandung
+				  zoom: 14,
+				});
+			  }, 300); // Delay agar layout stabil
+			});
+
+
+		</script>
+		
+		
+		<!-- THIS -->
+		<!-- <script> -->
+		  <!-- document.addEventListener("DOMContentLoaded", function () { -->
+			<!-- const qrImage = document.getElementById("qrTrigger"); -->
+			<!-- const lokasi2 = document.getElementById("lokasi2"); -->
+
+			<!-- qrImage.addEventListener("click", function () { -->
+			  <!-- lokasi2.classList.add("show"); -->
+
+			  <!-- // Trigger resize agar Leaflet tahu ukuran kontainer -->
+			  <!-- setTimeout(() => { -->
+				<!-- window.dispatchEvent(new Event('resize')); -->
+			  <!-- }, 600); -->
+			<!-- }); -->
+		  <!-- }); -->
+		<!-- </script> -->
+		<!-- <script> -->
+		  <!-- document.addEventListener("DOMContentLoaded", function () { -->
+			<!-- const qrImage = document.getElementById("qrTrigger"); -->
+			<!-- const lokasi2 = document.getElementById("lokasi2"); -->
+
+			<!-- qrImage.addEventListener("click", function () { -->
+			  <!-- lokasi2.classList.add("show"); -->
+
+			  <!-- // Scroll ke elemen lokasi2 agar fokus ke peta -->
+			  <!-- lokasi2.scrollIntoView({ behavior: "smooth", block: "start" }); -->
+
+			  <!-- // Trigger resize agar Leaflet tahu ukuran kontainer -->
+			  <!-- setTimeout(() => { -->
+				<!-- window.dispatchEvent(new Event('resize')); -->
+			  <!-- }, 600); -->
+			<!-- }); -->
+		  <!-- }); -->
+		<!-- </script> -->
+	    <script>
+		document.addEventListener("DOMContentLoaded", function () {
+		  const qrImage = document.getElementById("qrTrigger");
+		  const lokasi2 = document.getElementById("lokasi2");
+
+		  qrImage.addEventListener("click", function () {
+			lokasi2.classList.add("show");
+
+			// Tambahkan delay agar elemen benar-benar terlihat dan tinggi sudah dihitung
+			setTimeout(() => {
+			  window.dispatchEvent(new Event('resize')); // Trigger Leaflet untuk hitung ulang ukuran
+			  lokasi2.scrollIntoView({ behavior: "smooth", block: "start" });
+			}, 500); // Delay 500ms agar layout stabil
+		  });
+		});
+		</script>		
+		
+		<script>
+		  document.addEventListener("DOMContentLoaded", function () {
+			const toggleBtn = document.getElementById("toggleLokasi");
+			const lokasiSection = document.getElementById("lokasi2");
+
+			toggleBtn.addEventListener("click", function () {
+			  if (lokasiSection.style.display === "none") {
+				lokasiSection.style.display = "block";
+				toggleBtn.textContent = "Show Location";
+			  } else {
+				lokasiSection.style.display = "none";
+				toggleBtn.textContent = "Hide Location";
+			  }
+			});
+		  });
+		</script>
+		
+		<script>
+		window.addEventListener('scroll', function () {
+		  const navbar = document.querySelector('.navbar');
+		  if (window.scrollY > 50) {
+			navbar.classList.remove('navbar-solid');
+			navbar.classList.add('navbar-transparent');
+		  } else {
+			navbar.classList.add('navbar-solid');
+			navbar.classList.remove('navbar-transparent');
+		  }
+		});
+		</script>
+		
+		<script>
+		const destinationLat = -6.910939527850809;
+		const destinationLng = 107.55055595048624;
+
+		// Geser tampilan peta ke barat (lebih ke kiri), supaya marker muncul lebih ke kanan
+		const mapCenterLat = destinationLat;
+		const mapCenterLng = destinationLng - 0.002; // geser sekitar ~200 meter ke barat
+
+		const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
+
+		if (document.getElementById("map")) {
+		  const map = L.map('map').setView([mapCenterLat, mapCenterLng], 16);
+
+		  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '© OpenStreetMap contributors'
+		  }).addTo(map);
+
+		  L.marker([destinationLat, destinationLng])
+			.addTo(map)
+			.bindPopup(`
+			  <div style="text-align: center;">
+				<b>PT Leuwijaya Utama Textile</b><br>
+				Jl. Cibaligo KM 1.75, Cimahi<br>
+				<div style="margin-top: 8px;">
+				  <a href="${directionUrl}" target="_blank" 
+					 style="display: inline-block; padding: 6px 12px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 4px;">
+					Get Directions
+				  </a>
+				</div>
+			  </div>
+			`)
+			.openPopup();
+		}		
+
+		</script>
+		
+		<script>
+		function printSection() {
+		  var content = document.getElementById("sectionToPrint").innerHTML;
+		  var printWindow = window.open('', '', 'height=600,width=800');
+		  printWindow.document.write('<html><head><title>Print</title>');
+		  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
+		  printWindow.document.write('</head><body>');
+		  printWindow.document.write(content);
+		  printWindow.document.write('</body></html>');
+		  printWindow.document.close();
+
+		  // Tunggu sampai semua gambar selesai dimuat
+		  printWindow.onload = function () {
+			const images = printWindow.document.images;
+			let loaded = 0;
+			const total = images.length;
+
+			if (total === 0) {
+			  printWindow.focus();
+			  printWindow.print();
+			  printWindow.close();
+			} else {
+			  for (let i = 0; i < total; i++) {
+				images[i].onload = images[i].onerror = function () {
+				  loaded++;
+				  if (loaded === total) {
+					printWindow.focus();
+					printWindow.print();
+					printWindow.close();
+				  }
+				};
+			  }
+			}
+		  };
+		}
+		</script>
+		
+		<script>
+		function printSection2() {
+		  var content = document.getElementById("sectionToPrintProduct").innerHTML;
+		  var printWindow = window.open('', '', 'height=600,width=800');
+		  printWindow.document.write('<html><head><title>Print</title>');
+		  printWindow.document.write('<style>body{ font-family: Arial; }</style>');
+		  printWindow.document.write('</head><body>');
+		  printWindow.document.write(content);
+		  printWindow.document.write('</body></html>');
+		  printWindow.document.close();
+
+		  // Tunggu sampai semua gambar selesai dimuat
+		  printWindow.onload = function () {
+			const images = printWindow.document.images;
+			let loaded = 0;
+			const total = images.length;
+
+			if (total === 0) {
+			  printWindow.focus();
+			  printWindow.print();
+			  printWindow.close();
+			} else {
+			  for (let i = 0; i < total; i++) {
+				images[i].onload = images[i].onerror = function () {
+				  loaded++;
+				  if (loaded === total) {
+					printWindow.focus();
+					printWindow.print();
+					printWindow.close();
+				  }
+				};
+			  }
+			}
+		  };
+		}
+		</script>
+
+		<script>
+			const map = L.map('map').setView([-6.91147, 107.5612], 16); // Koordinat PT Leuwijaya Utama Textile
+
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '© OpenStreetMap contributors'
+			}).addTo(map);
+
+			const destinationLat = -6.910939527850809;
+			const destinationLng = 107.55055595048624;
+
+
+			const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}`;
+
+			L.marker([destinationLat, destinationLng])
+				.addTo(map)
+				.bindPopup(`
+					<b>PT Leuwijaya Utama Textile</b><br>
+					Jl. Cibaligo KM 1.75, Cimahi<br>
+					<a href="${directionUrl}" target="_blank" style="color: blue; text-decoration: underline;">
+						 Get Directions
+					</a>
+				`)
+				.openPopup();
+		</script>
+
+        <!-- Footer -->
+        <!-- <footer>&copy; 2025 PT Leuwijaya. All rights reserved.</footer> -->
+		<footer>
+		  &copy; <span id="year"></span> PT Leuwijaya. All rights reserved.
+		</footer>
+        <!-- Scripts -->
+		<script>
+		  document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                        } else {
+                            entry.target.classList.remove("active");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.3,
+                }
+            );
+            document.querySelectorAll(".animate-on-scroll").forEach((elem) => {
+                observer.observe(elem);
+            });
+            document.querySelectorAll(".navbar-collapse a").forEach(function (navLink) {
+                navLink.addEventListener("click", function () {
+                    const navbarToggler = document.querySelector(".navbar-toggler");
+                    const navbarCollapse = document.querySelector(".navbar-collapse");
+                    if (navbarCollapse.classList.contains("show")) {
+                        navbarToggler.click(); // Simulate toggle button click
+                    }
+                });
+            });
+            // Tombol muncul saat scroll
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $("#backToTop").fadeIn();
+                } else {
+                    $("#backToTop").fadeOut();
+                }
+            });
+            // Scroll ke atas saat klik
+            $(document).ready(function () {
+                $("#backToTop").click(function () {
+                    $("html, body").animate(
+                        {
+                            scrollTop: 0,
+                        },
+                        600
+                    );
+                    return false;
+                });
+            });
+
+            ////produk list
+            $(document).ready(function () {
+    const $produkList = $("#produk-list");
+    const produkPerGroup = 3;
+    let currentIndex = 0;
+    let currentKategori = "Knitting";
+	
+	$("#prevBtn").on("click", function () {
+  if (currentKategori !== "ALL") {
+    currentIndex = (currentIndex - produkPerGroup + produk.length) % produk.length;
+    tampilkanProduk();
+  }
+});
+
+$("#nextBtn").on("click", function () {
+  if (currentKategori !== "ALL") {
+    currentIndex = (currentIndex + produkPerGroup) % produk.length;
+    tampilkanProduk();
+  }
+});
+
+
+    const produk = [
+      { nama: "Zibda", gambar: "webp/Zibda.webp" },//0
+	  
+      { nama: "Picasso Stretch", gambar: "webp/Picasso Stretch.webp" },//1
+      { nama: "Famous", gambar: "webp/Famous.webp" },//2
+      { nama: "Shiddiq Stretch", gambar: "webp/Shiddiq Stretch.webp" },//3
+      { nama: "Creator", gambar: "webp/Kreator.webp" },//4	  
+	  
+	  //ladies woven
+      { nama: "Super Bonanza", gambar: "webp/SUPER BONANZA.webp" },//5
+      { nama: "Moreno Stretch", gambar: "webp/Moreno Stretch PD.webp" },//6
+      { nama: "Cobra Stretch", gambar: "webp/Cobra Stretch PD.webp" },//7
+      { nama: "Maliki Stretch", gambar: "webp/Cobra Stretch PD (2).webp" },//8
+      { nama: "Fursan", gambar: "webp/Fursan PD.webp" },//9
+      { nama: "Nida", gambar: "webp/Nida PD.webp" },//10
+      
+	  { nama: "Cobra", gambar: "webp/Cobra FB.webp" },//11
+	  { nama: "Ramada", gambar: "webp/Ramada FB.webp" },//12
+	  { nama: "Maliki Stretch", gambar: "webp/Maliki Stretch FB.webp" },//13
+	  { nama: "Maliki", gambar: "webp/Maliki FB.webp" },//14
+	  { nama: "Kiara", gambar: "webp/Kiara FB.webp" },//15
+	  { nama: "Ronaldo Stretch", gambar: "webp/Ronaldo Stretch FB.webp" },//16
+	  { nama: "Bonanza", gambar: "webp/Bonanza FB.webp" },//17
+	  { nama: "Fursan", gambar: "webp/Fursan FB.webp" },//18
+	  { nama: "Nida", gambar: "webp/Nida FB.webp" },//19
+	  
+	  { nama: "Minimal", gambar: "webp/Minimal.webp" },//20
+	  { nama: "Lemon Skin", gambar: "webp/Lemon Skin.webp" },//21	  
+	  { nama: "Baby Dior", gambar: "webp/Baby Dior.webp" },//22 not used
+	  { nama: "Mango", gambar: "webp/Mango Reduce.webp" },//23
+	  { nama: "Naomi", gambar: "webp/Naomi Reduce.webp" },//24
+	  { nama: "Typhoon", gambar: "webp/Typhoon.webp" },//25
+	  { nama: "Jersey", gambar: "webp/Jersey.webp" },//26
+	  
+	  //other ladies woven
+	  { nama: "Baby Moreno", gambar: "webp/Baby Moreno.webp" },//27
+	  { nama: "Roseline", gambar: "webp/ROSELINE.webp" },//28
+	  
+	  //additional
+	  { nama: "Michella", gambar: "webp/Michellin.webp" },//29	  
+	  
+    ];
+
+    const kategoriMap = {
+      "Thobe": [0],
+      "Men Suiting": [1, 2, 3, 4, 29],
+      "Ladies Woven": [5, 6, 7, 8, 9, 10, 28],
+      "Knitting": [20, 21, 23, 24, 25, 26],
+    };
+
+    //const grupNamaList = ["FORMAL BLACK", "SUITING", "WOVEN", "KNITTING"];//, "Thobe", "MontoCoat", "SpecialTreatment"
+	const grupNamaList = [ "Men Suiting", "Ladies Woven", "Knitting", "Thobe"];//, "Thobe", "MontoCoat", "SpecialTreatment"
+    const grupNamaListKeterangan = [
+	  "","","",""
+      <!-- "Formal Black fabric is one of our flagship products and areas of specialization. Available in both stretch and non-stretch types, it comes in a wide weight range from 50 GSM to 360 GSM. This fabric is commonly used for Abayas, Blazers, Trousers, Headscarves, Dresses and more.", -->
+      <!-- "We offer high-quality suiting fabrics, available in both stretch and non-stretch types, ideal for formal garments such as Blazers, Pants, and Suits.", -->
+      <!-- "Our woven fabrics range from 50 GSM to 260 GSM, making them ideal for Dresses, Khimars, Thobes, Headscarves, Abayas, and more. The material is comfortable, and good resistant to wrinkles.", -->
+      <!-- "Our knitting fabrics are designed for optimal comfort and wrinkle resistance with weight range of 150 GSM to 270 GSM, these fabrics are ideally suited for Dresses, instant Hijab, Leggings, Blouses and more.", -->
+	  
+	  <!-- "We provide Zibda, a premium fabric specially selected for Thobes with about 140 GSM of weight to showing elegant drape and long-lasting comfort. Our Zibda is a special purpose fabric with exceptional quality.", -->
+	  <!-- "The Monto Coats looks elegantly made with our Moreno Stretch fabric, it carefully chosen to balance elegance, modesty, and comfort. With a soft drape, fancy texture, and lasting durability.", -->
+	  <!-- "Our fabrics can be enhanced with some optional treatment to meet diverse functional needs and to value up your specific preferences such as water repellent, antibacterial, perfumery and also woven selvedge.",	   -->
+    ];
+
+    function tampilkanProduk() {
+  $produkList.fadeOut(200, function () {
+    $produkList.empty();
+
+    if (currentKategori === "ALL") {
+      const allProdukPerKategori = grupNamaList.map((kategori, index) => {
+        const produkKategori = kategoriMap[kategori].map(i => produk[i]);
+        return {
+          nama: grupNamaList[index],
+          deskripsi: grupNamaListKeterangan[index],
+          items: produkKategori
+        };
+      });
+
+      allProdukPerKategori.forEach(grup => {
+        const grupDeskripsiHTML = `
+          <div class="col-12 text-center mb-4">
+            <h5 class="text-center2">${grup.nama}</h5>
+            <p class="card-text" style="font-size: 1.2rem;">${grup.deskripsi}</p>
+          </div>
+        `;
+        $produkList.append(grupDeskripsiHTML);
+
+        const rowHTML = grup.items.map(item => `
+          <div class="col-md-4">
+            <div class="card mb-4">
+               <!-- <div class="img-wrapper"> -->
+                <!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				<img src="${item.gambar}" alt="${item.nama}" class="zoomable" onclick="toggleZoom(this)">
+               <!-- </div> -->
+            </div>
+          </div>
+        `).join("");
+
+        if (grup.items.length === 1) {
+		  $produkList.append(`
+			<div class="single-item-center">
+			  <div class="col-md-4">
+				<div class="card mb-4">
+				  <!-- <div class="img-wrapper"> -->
+					<!-- <img src="${grup.items[0].gambar}" class="card-img-top" alt="${grup.items[0].nama}"> -->
+					<img src="${grup.items[0].gambar}" alt="${grup.items[0].gambar}" class="zoomable" onclick="toggleZoom(this)">
+				  <!-- </div> -->
+				</div>
+			  </div>
+			</div>
+		  `);
+		} else {
+		  $produkList.append(`<div class="row justify-content-center">${rowHTML}</div>`);
+		}
+      });
+
+    } else {
+	  const produkFiltered = kategoriMap[currentKategori].map(index => produk[index]);
+	  const grupIndex = grupNamaList.indexOf(currentKategori);
+
+	  const grupDeskripsiHTML = `
+		<div class="col-12 text-center mb-4">
+		  <h5 class="text-center2">${grupNamaList[grupIndex]}</h5>
+		  <p class="card-text" style="font-size: 1.2rem;">${grupNamaListKeterangan[grupIndex]}</p>
+		</div>
+	  `;
+	  $produkList.append(grupDeskripsiHTML);
+
+	  if (produkFiltered.length === 1) {
+		const item = produkFiltered[0];
+		$produkList.append(`
+		  <div class="single-item-center">
+			<div class="col-md-4">
+			  <div class="card mb-4">
+				<div class="img-wrapper">
+				  <!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				  <img src="${item.gambar}" alt="${item.nama}" class="zoomable" onclick="toggleZoom(this)">
+				</div>
+			  </div>
+			</div>
+		  </div>
+		`);
+	  } else {
+		const rowHTML = produkFiltered.map(item => `
+		  <div class="col-md-4">
+			<div class="card mb-4">
+			  <div class="img-wrapper">
+				<!-- <img src="${item.gambar}" class="card-img-top" alt="${item.nama}"> -->
+				<img src="${item.gambar}" class="zoomable" onclick="toggleZoom(this)" alt="${item.nama}">
+			  </div>
+			</div>
+		  </div>
+		`).join("");
+
+		$produkList.append(`<div class="row justify-content-center">${rowHTML}</div>`);
+	  }
+	}
+
+		$produkList.fadeIn(300);
+	  });
+	}
+
+    // Tab kategori
+    $(".kategori-tab").on("click", function () {
+      $(".kategori-tab").removeClass("active");
+      $(this).addClass("active");
+
+      currentKategori = $(this).data("kategori");
+      currentIndex = 0;
+      tampilkanProduk();
+    });
+
+    // Tombol navigasi
+    $("#prevBtn").on("click", function () {
+      if (currentKategori === "ALL") {
+        currentIndex = (currentIndex - produkPerGroup + produk.length) % produk.length;
+        tampilkanProduk();
+      }
+    });
+
+    $("#nextBtn").on("click", function () {
+      if (currentKategori === "ALL") {
+        currentIndex = (currentIndex + produkPerGroup) % produk.length;
+        tampilkanProduk();
+      }
+    });
+
+    // Inisialisasi awal
+    tampilkanProduk();
+  });
+            // Data lowongan kerja
+            const market = [
+                "Besides serving the domestic market, Leuwitex also export the products to international countries",
+                //,"QA Analyst - Pengalaman min 2 tahun",
+                //"Admin HRD - Terbuka untuk fresh graduate"
+            ];
+            market.forEach((posisi) => {
+                $("#market-list").append(`<li class="list-group-item">${posisi}</li>`);
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+                const cards = document.querySelectorAll(".fabric-card");
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                            } else {
+                                entry.target.classList.remove("visible");
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.3,
+                    }
+                );
+                cards.forEach((card) => observer.observe(card));
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const cards = document.querySelectorAll(".section-card");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                            } else {
+                                entry.target.classList.remove("visible");
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.2, // sesuaikan agar efek muncul sesuai selera
+                    }
+                );
+
+                cards.forEach((card) => observer.observe(card));
+            });
+			
+			document.addEventListener("DOMContentLoaded", () => {
+			  const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+				  if (entry.isIntersecting) {
+					entry.target.classList.add("visible");
+				  } else {
+					entry.target.classList.remove("visible"); // reset agar bisa animasi ulang
+				  }
+				});
+			  }, { threshold: 0.2 });
+
+			  document.querySelectorAll(".scroll-fade-in").forEach((el) => {
+				observer.observe(el);
+			  });
+			});
+
+
+        </script>
+
+		<script>
+		  function toggleZoom(img) {
+			img.classList.toggle('zoomed');
+		  }
+		</script>
+
+		<script type="text/javascript">
+		  function googleTranslateElementInit() {
+			new google.translate.TranslateElement({
+			  pageLanguage: 'en',
+			  includedLanguages: 'en,ar,id',
+			  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+			}, 'google_translate_element');
+		  }
+		</script>
+
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+        <!-- Tombol Back to Top -->
+        <button id="backToTop">Back to Top</button>
+    </body>
+</html>
